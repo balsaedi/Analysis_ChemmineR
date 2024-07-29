@@ -1,0 +1,238 @@
+Installation Process
+1. https://cran.r-project.org/bin/windows/base/
+
+2. https://posit.co/download/rstudio-desktop/ 
+
+3. if (!requireNamespace("BiocManager", quietly = TRUE))
+install.packages("BiocManager")
+BiocManager::install(version = "3.10")
+
+4. if (!requireNamespace("BiocManager", quietly=TRUE)) 
+install.packages("BiocManager") 
+BiocManager::install("ChemmineR")
+
+
+##Basics of R## 
+setwd("E:/COURSES/NSTC/CHEMMINER")
+getwd()
+a <- 10
+b = 20
+a
+b
+a <- 30
+a1 <- 5
+a1
+a
+b
+a+b
+addab <- a+b
+addab
+sqrt(addab)
+s <- -10
+s
+abs(s)
+a/b
+log(addab)
+##you can use all artithmatic operator in different varibales
+##porvided vaibale length must be 4,5,6,same
+com1 <- c(1,3,5,7,9)
+com1
+com2 <- c(2,4,6,8,4)
+com2
+
+com1+com2
+length(com2)
+name <- "Afroz" 
+seq1 <- seq(from=1, to = 500, by=1) #sequnence
+seq1
+rep1 <- rep(2, times = 500)
+rep1
+rep2 <- rep("ATCG", times = 100)
+rep2
+seq1 <- rep(seq(from=1, to=100, by=2), times = 2)
+seq1
+#[]is used to extract the information (data) from the vector
+seq1[seq1>50]
+1:100
+ls()
+rm(addab)
+
+
+#matrix: Data must be justified 12345
+matodd <- matrix(c(1,2,3,5,7,9), nrow = 3, byrow = TRUE)
+matodd
+mateven <- matrix(c(2,4,6,8,10,12), nrow = 3, byrow = FALSE)
+mateven
+matodd[2, ]
+matodd[ , 2]
+mateven[, 2]
+matodd
+mateven
+matodd+mateven
+
+##Working on data file "data.csv"
+
+csvfile <- read.csv(file.choose(), header = TRUE)
+csvfile
+#textfile <- read.delim(file.choose(), header = TRUE)
+#textfile
+mean(Salary)
+mean(csvfile$Salary)
+attach(csvfile)
+detach(csvfile)
+mean(Salary)
+names(csvfile)
+levels(csvfile)
+View(csvfile)
+dim(csvfile)
+head(csvfile)
+tail(csvfile)
+names(csvfile)
+
+asd <- c(1,0,1,1,1,0,0,1,0,0)
+asd
+ls()
+#rm(list=ls())
+class(asd)
+summary(asd)
+asd <- as.factor(asd)
+asd
+class(asd)
+summary(asd)
+asd <- as.integer(asd)
+asd
+class(asd)
+summary(asd)
+
+
+##Working on data file "test.csv"
+data <- read.csv(file.choose(), header=TRUE)
+data
+
+
+##Analyaing the PDB data file
+
+#Reading the csv file if your data in your working directory
+getwd()
+proteindata <- read.csv("test.csv")
+proteindata
+#Convert to dataframe
+print(is.data.frame(proteindata)) 
+print(ncol(proteindata))
+print(nrow(proteindata))
+##Analyzing the CSV file
+# Get the max residues from proteindata.
+objname1<- max(proteindata$NO_RESIDUES)
+objname1
+print(objname1)
+# Get the protein detail having max residues.
+objname2 <- subset(proteindata, NO_RESIDUES == max(NO_RESIDUES))
+print(objname2)
+# Get the protein detail having entry in PDB database.
+objname3 <- subset(proteindata, DBNAME == "PDB") 
+print(objname3)
+# Get the protein detail having more than 3 dimer from PDB database.
+objname4 <- subset(proteindata, NO_DIMER > 3 & DBNAME == "PDB") 
+print(objname4)
+# Get the protein detail having more than 3 dimer from PDB database
+objname5 <- subset(proteindata, as.Date(DEPOSITED_DATE) > as.Date("2014-05-05")) 
+print(objname5)
+
+
+##ChemminR Script
+install.packages("ggplot2")
+library("ggplot2") 
+library("ChemmineR") 
+
+##Create Instances of SDFset class:
+
+data(sdfsample) 
+sdfset <- sdfsample
+sdfset # Returns summary of SDFset 
+
+sdfset[1:4] # Subsetting of object
+sdfset[[1]] # Returns summarized content of one SDF
+
+view(sdfset[1:4]) # Returns summarized content of many SDFs 
+as(sdfset[1:4], "list") # Returns complete content of many SDFs
+
+##An SDFset is created during the import of an SD file
+sdfset <- read.SDFset("http://faculty.ucr.edu/~tgirke/Documents/R_BioCond/Samples/sdfsample.sdf") 
+
+#Miscellaneous accessor methods for SDFset containe
+
+header(sdfset[1:4]) 
+header(sdfset[[1]])
+
+##RETRIVING ATOM BLOCK/BOND BLOCK/ DATA BLOCK
+
+#Atom block
+atomblock(sdfset[1:4]) 
+atomblock(sdfset[[1]])[1:4,] 
+
+#Bond Block
+bondblock(sdfset[1:4]) 
+bondblock(sdfset[[1]])[1:4,] 
+
+#Data Block
+datablock(sdfset[1:4])  
+datablock(sdfset[[1]])[1:4] 
+
+##Assigning compound IDs and keeping them unique:
+
+cid(sdfset)[1:4] # Returns IDs from SDFset object
+
+sdfid(sdfset)[1:4] # Returns IDs from SD file header block
+
+unique_ids <- makeUnique(sdfid(sdfset))
+
+cid(sdfset) <- unique_ids
+cid(sdfset)
+
+##Converting the data blocks in an SDFset to a matrix:
+
+blockmatrix <- datablock2ma(datablocklist=datablock(sdfset)) # Converts data block to matrix 
+blockmatrix
+numchar <- splitNumChar(blockmatrix=blockmatrix) # Splits to numeric and character matrix 
+numchar
+numchar[[1]][1:2,1:2] # Slice of numeric matrix 
+
+numchar[[2]][1:2,10:11] # Slice of character matrix 
+
+##Compute atom frequency matrix, molecular weight and formula:
+
+
+propma <- data.frame(MF=MF(sdfset), MW=MW(sdfset), atomcountMA(sdfset))
+propma[1:4, ] 
+
+#Assign matrix data to data block:
+
+datablock(sdfset) <- propma 
+datablock(sdfset[1]) 
+
+##String searching in SDFset:
+
+grepSDFset("650001", sdfset, field="datablock", mode="subset") # Returns summary view of matches.
+
+grepSDFset("650001", sdfset, field="datablock", mode="index") 
+
+##MOLECULAR VISUALIZATION IN R
+
+#Export SDFset to SD file:
+
+write.SDF(sdfset[1:4], file="sub.sdf", sig=TRUE) 
+#Plot molecule structure of one or many SDFs:
+par(mar = c(1, 1, 1, 1))
+plot(sdfset[1:4], print=FALSE) # Plots structures to R graphics device 
+sdf.visualize(sdfset[1:4]) # Compound viewing in web browser
+
+save.image("nstc.RData")
+q()
+y
+
+
+###Learning Link
+1. https://www.w3schools.com/r/
+2. https://bioconductor.org/packages/release/bioc/vignettes/ChemmineR/inst/doc/ChemmineR.html
+3. https://www.bioconductor.org/
+
