@@ -109,4 +109,30 @@ There are many chemical databases, here are some of them;
 #### Drug Bank Inteface
 
 #### PubChem Interface
+Topics 
+  - PubChem depositories
+
+#### Zinc Databases
+This is curated collected of commercially available chemical compounds prepared especially for virtual screening. 
+
+The database contains over 37 million enumerated searchable, commercially available compounds in 2D, over 4.5 billion of which have been built in biologically relevant ready-to-dock 3D formats. The database can be searched online using whole-molecule similarity, substructure, and patterns in 2D
+
+- Add how the database works and its interface. How molecules are sketched
+
+## Why ChemmineR tool 
+`ChemmineR` is a chemoinformatics package for analyzing drug-like small molecule data in R . In addition, `ChemmineR    offers visualization functions for compounds clustering results and chemical structures. 
+
+The integration of chemoinformatics tools with the R programming environment has many advantages, such as aeasy access to a wide spectrum of statistical methods, machine learning algorithms and graphic utilities. 
+
+`ChemmineR` is an online service for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types. 
+
+<Check min 1hr 5mins>
+
+### Overview of Chemmine web tool
+<add the web interface> 
+
+
+Chemmine WEb Tools is an online service for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types. Compounds can be imported into the workbench by drawing structures in the web browser, copy and paste, from local files, or from a PubChem search which includes an online molecular editor. 
+
+<check 1hr 9min> 
 

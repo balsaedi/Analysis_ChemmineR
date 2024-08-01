@@ -10,3 +10,7 @@ chemoinformatic-tasks
 application-of-chemoinformatics-in-the-drug-industry
 drug-bank-inteface
 pubchem-interface
+zinc-databases
+why-chemminer-tool
+overview-of-chemmine-web-tool
+bioconductor-package
