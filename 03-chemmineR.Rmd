@@ -1,0 +1,159 @@
+# Chemical Properties prediction and visualized. 
+
+- Structural properties similarity searching 
+- Molecular visualizations 
+
+## Installation 
+The `ChemmineR` package can be installed from R with: 
+
+```
+if(!requireNamespace("BioManager", quitely=TRUE))
+install.packages("BioManager")
+BiocManager::install("ChemminerR")
+```
+
+## Loading the package and Documentation 
+The below command is called to invoke the `ChemmineR` package to the program 
+```{r}
+library("ChemmineR") # Loads the package
+```
+
+To find the documentation - list all functions and classes call the command below
+```
+library(help="ChemmineR") # Lists all the functions and classes
+```
+
+To open a PDF manual for `ChemmineR` documentation from R
+```
+vignette("ChemmineR")
+```
+
+## Create Instances of SDFset class
+
+```{r}
+data("sdfsample")
+```
+
+```{r}
+sdfset <- sdfsample
+sdfset[1:4] #subsetting of object
+```
+
+To return a summarized content of one SDF
+```{r}
+sdfset[[1]]
+```
+
+## Retrieving atom, bond and data block
+**Atom block**
+
+```{r}
+atomblock(sdfset[1:4])
+atomblock(sdfset[1])[1:4]
+```
+
+**Bond block**
+```{r}
+bondblock(sdfset[1:4])
+bondblock(sdfset[1])[1:4]
+```
+
+**Data Block**
+```{r}
+datablock(sdfset[1:4])
+```
+
+### Assigning compound IDS and keeping them unique
+
+Return IDs from SDFset object
+```{r}
+cid(sdfset)[1:4]
+```
+
+Returns IDs from SD file header 
+```{r}
+unique_ids <- makeUnique(sdfid(sdfset))
+cid(sdfset) <- unique_ids
+```
+
+
+### Converting the data blocks in an SDFset to a matrix
+These data blocks can also be converted to a matrix by 
+
+```{r}
+blockmatrix <- datablock2ma(datablocklist = datablock(sdfset))
+```
+
+The matrix can also be split into numeric and character matrix by `splitNumChar()` function
+```{r}
+numchar <- splitNumChar(blockmatrix = blockmatrix)
+```
+
+Slice the numeric matrix 
+
+```{r}
+numchar[[1]][1:2,1:2]
+```
+
+Slice the character matrix 
+```{r}
+numchar[[2]][1:2, 10:11]
+```
+
+### Compute atom frequency matrix, molecular weight and formula 
+
+```{r}
+propma <- data.frame(MF=MF(sdfset),
+                     MW=MW(sdfset), atomcountMA(sdfset))
+
+propma[1:4,]
+```
+
+Assign matrix data to data block 
+```{r}
+datablock(sdfset) <- propma
+datablock(sdfset[1])
+```
+
+### String searching in SDFset
+
+Returns the  summary view of the matches 
+```{r}
+grepSDFset("650001", 
+           sdfset,
+           field="datablock",
+           mode="subset")
+```
+Search by index
+```{r}
+grepSDFset("650001", 
+           sdfset,
+           field="datablock",
+           mode="index")
+```
+
+## Molecular visualization in R 
+
+Export SDFset to SD file 
+
+```
+write.SDF(sdfset[1:4], file="sub.sdf", sig=TRUE)
+```
+
+Plot molecule structure of one or many SDFs
+
+```{r}
+plot(sdfset[1:4], print=FALSE) # plots structures to R graphics device
+```
+
+Compound viewing in web browser
+```
+sdf.visualize(sdfset[1:4])
+```
+
+
+
+
+
+
+

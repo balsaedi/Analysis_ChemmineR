@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Chemical Properties prediction and visualized. | R Course</title>
+  <meta name="description" content="Chapter 3 Chemical Properties prediction and visualized. | R Course" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Chemical Properties prediction and visualized. | R Course" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Chemical Properties prediction and visualized. | R Course" />
+  
+  
+  
+
+<meta name="author" content="YOUR NAME HERE" />
+
+
+<meta name="date" content="2024-08-04" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="bioconductor-package.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">SHORT TITLE HERE</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Analysis of Drug like Molecule using ChemmineR</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#chemminer-installation"><i class="fa fa-check"></i><b>1.1</b> ChemmineR Installation</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#objectives"><i class="fa fa-check"></i><b>1.2</b> Objectives</a></li>
+<li class="chapter" data-level="1.3" data-path="index.html"><a href="index.html#outcome"><i class="fa fa-check"></i><b>1.3</b> Outcome</a></li>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#informatics"><i class="fa fa-check"></i><b>1.4</b> Informatics</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#bioinformatics"><i class="fa fa-check"></i><b>1.4.1</b> Bioinformatics</a></li>
+<li class="chapter" data-level="1.4.2" data-path="index.html"><a href="index.html#chemoinformatics"><i class="fa fa-check"></i><b>1.4.2</b> Chemoinformatics</a></li>
+<li class="chapter" data-level="1.4.3" data-path="index.html"><a href="index.html#related-aspects"><i class="fa fa-check"></i><b>1.4.3</b> Related aspects</a></li>
+<li class="chapter" data-level="1.4.4" data-path="index.html"><a href="index.html#chemoinformatic-tasks"><i class="fa fa-check"></i><b>1.4.4</b> Chemoinformatic tasks</a></li>
+<li class="chapter" data-level="1.4.5" data-path="index.html"><a href="index.html#application-of-chemoinformatics-in-the-drug-industry"><i class="fa fa-check"></i><b>1.4.5</b> Application of Chemoinformatics in the Drug Industry</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#why-chemminer-tool"><i class="fa fa-check"></i><b>1.5</b> Why ChemmineR tool</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="index.html"><a href="index.html#overview-of-chemmine-web-tool"><i class="fa fa-check"></i><b>1.5.1</b> Overview of Chemmine web tool</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="index.html"><a href="index.html#exploring-drug-like-molecules-databases"><i class="fa fa-check"></i><b>1.6</b> Exploring drug like molecules databases</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="bioconductor-package.html"><a href="bioconductor-package.html"><i class="fa fa-check"></i><b>2</b> Bioconductor Package</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="bioconductor-package.html"><a href="bioconductor-package.html#overview-of-the-bioconductor-package"><i class="fa fa-check"></i><b>2.1</b> Overview of the BioConductor package</a></li>
+<li class="chapter" data-level="2.2" data-path="bioconductor-package.html"><a href="bioconductor-package.html#installation-of-bioconductor-package"><i class="fa fa-check"></i><b>2.2</b> Installation of BioConductor package</a></li>
+<li class="chapter" data-level="2.3" data-path="bioconductor-package.html"><a href="bioconductor-package.html#importing-data-in-r"><i class="fa fa-check"></i><b>2.3</b> Importing Data in R</a></li>
+<li class="chapter" data-level="2.4" data-path="bioconductor-package.html"><a href="bioconductor-package.html#writing-script-of-code-in-r"><i class="fa fa-check"></i><b>2.4</b> Writing Script of Code in R</a></li>
+<li class="chapter" data-level="2.5" data-path="bioconductor-package.html"><a href="bioconductor-package.html#data-interface"><i class="fa fa-check"></i><b>2.5</b> Data Interface</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="bioconductor-package.html"><a href="bioconductor-package.html#reading-the-.csv-file"><i class="fa fa-check"></i><b>2.5.1</b> Reading the *.csv file</a></li>
+<li class="chapter" data-level="2.5.2" data-path="bioconductor-package.html"><a href="bioconductor-package.html#analyzing-the-.csv-file"><i class="fa fa-check"></i><b>2.5.2</b> Analyzing the *.csv file</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html"><i class="fa fa-check"></i><b>3</b> Chemical Properties prediction and visualized.</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#installation"><i class="fa fa-check"></i><b>3.1</b> Installation</a></li>
+<li class="chapter" data-level="3.2" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#loading-the-package-and-documentation"><i class="fa fa-check"></i><b>3.2</b> Loading the package and Documentation</a></li>
+<li class="chapter" data-level="3.3" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#create-instances-of-sdfset-class"><i class="fa fa-check"></i><b>3.3</b> Create Instances of SDFset class</a></li>
+<li class="chapter" data-level="3.4" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#retrieving-atom-bond-and-data-block"><i class="fa fa-check"></i><b>3.4</b> Retrieving atom, bond and data block</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#assigning-compound-ids-and-keeping-them-unique"><i class="fa fa-check"></i><b>3.4.1</b> Assigning compound IDS and keeping them unique</a></li>
+<li class="chapter" data-level="3.4.2" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#converting-the-data-blocks-in-an-sdfset-to-a-matrix"><i class="fa fa-check"></i><b>3.4.2</b> Converting the data blocks in an SDFset to a matrix</a></li>
+<li class="chapter" data-level="3.4.3" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#compute-atom-frequency-matrix-molecular-weight-and-formula"><i class="fa fa-check"></i><b>3.4.3</b> Compute atom frequency matrix, molecular weight and formula</a></li>
+<li class="chapter" data-level="3.4.4" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#string-searching-in-sdfset"><i class="fa fa-check"></i><b>3.4.4</b> String searching in SDFset</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#molecular-visualization-in-r"><i class="fa fa-check"></i><b>3.5</b> Molecular visualization in R</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">R Course</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="chemical-properties-prediction-and-visualized." class="section level1 hasAnchor" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Chemical Properties prediction and visualized.<a href="chemical-properties-prediction-and-visualized..html#chemical-properties-prediction-and-visualized." class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<ul>
+<li>Structural properties similarity searching</li>
+<li>Molecular visualizations</li>
+</ul>
+<div id="installation" class="section level2 hasAnchor" number="3.1">
+<h2><span class="header-section-number">3.1</span> Installation<a href="chemical-properties-prediction-and-visualized..html#installation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The <code>ChemmineR</code> package can be installed from R with:</p>
+<pre><code>if(!requireNamespace(&quot;BioManager&quot;, quitely=TRUE))
+install.packages(&quot;BioManager&quot;)
+BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
+</div>
+<div id="loading-the-package-and-documentation" class="section level2 hasAnchor" number="3.2">
+<h2><span class="header-section-number">3.2</span> Loading the package and Documentation<a href="chemical-properties-prediction-and-visualized..html#loading-the-package-and-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The below command is called to invoke the <code>ChemmineR</code> package to the program</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="chemical-properties-prediction-and-visualized..html#cb20-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ChemmineR&quot;</span>) <span class="co"># Loads the package</span></span></code></pre></div>
+<p>To find the documentation - list all functions and classes call the command below</p>
+<pre><code>library(help=&quot;ChemmineR&quot;) # Lists all the functions and classes</code></pre>
+<p>To open a PDF manual for <code>ChemmineR</code> documentation from R</p>
+<pre><code>vignette(&quot;ChemmineR&quot;)</code></pre>
+</div>
+<div id="create-instances-of-sdfset-class" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Create Instances of SDFset class<a href="chemical-properties-prediction-and-visualized..html#create-instances-of-sdfset-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="chemical-properties-prediction-and-visualized..html#cb23-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;sdfsample&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="chemical-properties-prediction-and-visualized..html#cb24-1" tabindex="-1"></a>sdfset <span class="ot">&lt;-</span> sdfsample</span>
+<span id="cb24-2"><a href="chemical-properties-prediction-and-visualized..html#cb24-2" tabindex="-1"></a>sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="co">#subsetting of object</span></span></code></pre></div>
+<pre><code>## An instance of &quot;SDFset&quot; with 4 molecules</code></pre>
+<p>To return a summarized content of one SDF</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="chemical-properties-prediction-and-visualized..html#cb26-1" tabindex="-1"></a>sdfset[[<span class="dv">1</span>]]</span></code></pre></div>
+<pre><code>## An instance of &quot;SDF&quot;
+## 
+## &lt;&lt;header&gt;&gt;
+##                             Molecule_Name 
+##                                  &quot;650001&quot; 
+##                                    Source 
+##                  &quot;  -OEChem-07071010512D&quot; 
+##                                   Comment 
+##                                        &quot;&quot; 
+##                               Counts_Line 
+## &quot; 61 64  0     0  0  0  0  0  0999 V2000&quot; 
+## 
+## &lt;&lt;atomblock&gt;&gt;
+##           C1      C2  C3  C5  C6  C7  C8  C9 C10 C11 C12 C13 C14 C15 C16
+## O_1   7.0468  0.0839   0   0   0   0   0   0   0   0   0   0   0   0   0
+## O_2  12.2708  1.0492   0   0   0   0   0   0   0   0   0   0   0   0   0
+## ...      ...     ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+## H_60  1.8411 -1.5985   0   0   0   0   0   0   0   0   0   0   0   0   0
+## H_61  2.6597 -1.2843   0   0   0   0   0   0   0   0   0   0   0   0   0
+## 
+## &lt;&lt;bondblock&gt;&gt;
+##      C1  C2  C3  C4  C5  C6  C7
+## 1     1  16   2   0   0   0   0
+## 2     2  23   1   0   0   0   0
+## ... ... ... ... ... ... ... ...
+## 63   33  60   1   0   0   0   0
+## 64   33  61   1   0   0   0   0
+## 
+## &lt;&lt;datablock&gt;&gt; (33 data items)
+##           PUBCHEM_COMPOUND_CID PUBCHEM_COMPOUND_CANONICALIZED 
+##                       &quot;650001&quot;                            &quot;1&quot; 
+##      PUBCHEM_CACTVS_COMPLEXITY  PUBCHEM_CACTVS_HBOND_ACCEPTOR 
+##                          &quot;700&quot;                            &quot;7&quot; 
+##                                
+##                          &quot;...&quot;</code></pre>
+</div>
+<div id="retrieving-atom-bond-and-data-block" class="section level2 hasAnchor" number="3.4">
+<h2><span class="header-section-number">3.4</span> Retrieving atom, bond and data block<a href="chemical-properties-prediction-and-visualized..html#retrieving-atom-bond-and-data-block" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p><strong>Atom block</strong></p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="chemical-properties-prediction-and-visualized..html#cb28-1" tabindex="-1"></a><span class="fu">atomblock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<pre><code>## $CMP1
+##           C1      C2 C3 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16
+## O_1   7.0468  0.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_2  12.2708  1.0492  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_3  12.2708  3.1186  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_4   7.9128  2.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_5   5.3147  0.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_6   2.0000  0.7475  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_7   7.9128 -1.4161  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_8   8.7788  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_9   4.4487  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_10  2.6691  1.4906  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_11  7.0468 -1.9161  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_12  6.1332 -1.5094  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_13  6.9422 -2.9106  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_14  5.4641 -2.2525  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_15  5.9641 -3.1186  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_16  7.9128 -0.4161  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_17  8.7788  0.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_18  9.6448  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_19  7.9128  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_20  7.0468  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_21 10.5109  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_22  9.6448  2.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_23 11.3769  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_24  6.1808  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_25 11.3769  2.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_26 10.5109  3.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_27 13.1769  1.5631  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_28 13.1769  2.6047  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_29  5.3147  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_30  3.5827  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_31  3.4782  0.0894  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_32  2.5000 -0.1185  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_33  2.0933 -1.0321  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_34  7.0143 -1.2970  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_35  6.4432 -0.9724  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_36  5.6316 -1.1450  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_37  7.0071 -3.5272  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_38  7.5622 -2.9106  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_39  5.0492 -1.7918  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_40  4.9625 -2.6170  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_41  5.3977 -3.3707  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_42  6.1557 -3.7082  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_43  8.4497 -1.7261  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_44  8.9909 -0.4987  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_45  9.3894  0.1915  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_46  6.6482  0.6089  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_47  7.4453  0.6089  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_48 10.5109  0.4639  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_49  9.1079  2.8939  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_50  6.5793  2.0588  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_51  5.7822  2.0588  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_52 10.5109  3.7039  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_53 13.3860  0.9794  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_54 13.7878  1.6692  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_55 13.7878  2.4986  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_56 13.3860  3.1884  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_57  4.4487  2.2039  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_58  3.9389 -0.3255  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_59  1.5269 -0.7799  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_60  1.8411 -1.5985  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_61  2.6597 -1.2843  0  0  0  0  0  0   0   0   0   0   0   0   0
+## 
+## $CMP2
+##           C1      C2 C3 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16
+## O_1   3.7320  0.9970  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_2   2.0000 -2.0030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_3  10.1279 -2.7350  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_4   5.5443 -0.1982  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_5   3.7320 -2.0030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_6   5.5443 -1.8077  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_7   7.1279 -1.0030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_8   2.8660 -0.5030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_9   5.8550  0.7523  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_10  4.5981 -0.5030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_11  6.8335  0.9585  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_12  6.1279 -1.0030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_13  4.5981 -1.5030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_14  7.1441  1.9090  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_15  3.7320 -0.0030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_16  7.6279 -1.8690  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_17  8.1226  2.1152  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_18  2.8660 -1.5030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_19  8.6279 -1.8690  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_20  3.7320 -3.0030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_21  8.7905  1.3709  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_22  8.4333  3.0658  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_23  9.1279 -2.7350  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_24  9.7690  1.5772  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_25  9.4118  3.2720  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_26 10.0796  2.5277  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_27  5.8344  1.3719  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_28  5.2411  0.8396  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_29  6.8540  0.3388  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_30  7.4473  0.8711  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_31  7.1236  2.5287  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_32  6.5303  1.9964  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_33  7.4379 -0.4660  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_34  7.0453 -2.0811  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_35  7.7356 -2.4796  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_36  2.3291 -0.1930  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_37  9.2105 -1.6570  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_38  8.5202 -1.2584  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_39  3.1120 -3.0030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_40  3.7320 -3.6230  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_41  4.3520 -3.0030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_42  8.5979  0.7816  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_43  8.0192  3.5272  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_44  8.5453 -2.9471  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_45  9.2356 -3.3456  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_46 10.1830  1.1157  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_47  9.6044  3.8613  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_48 10.6863  2.6555  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_49 10.4379 -3.2720  0  0  0  0  0  0   0   0   0   0   0   0   0
+## 
+## $CMP3
+##          C1      C2 C3 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16
+## S_1  4.3260  1.9917  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_2  2.5369 -1.0961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_3  6.0010 -1.0961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_4  3.4030  0.4039  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_5  3.4030 -2.5961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_6  5.1350  0.4039  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_7  5.6350  2.9428  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_8  5.9440  1.9917  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_9  4.2690 -3.0961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_10 2.5435 -3.0908  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_11 2.5301 -4.0825  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_12 3.3758 -4.6003  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_13 4.2529 -4.1376  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_14 5.1350 -2.5961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_15 3.4030 -1.5961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_16 5.1510 -4.6653  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_17 4.2690 -1.0961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_18 5.1350 -1.5961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_19 6.0450 -3.1029  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_20 6.0530 -4.1445  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_21 4.2690 -0.0961  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_22 4.0472  3.7518  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_23 4.6350  2.9428  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_24 5.1350  1.4039  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_25 4.4540  4.6653  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_26 3.0527  3.6473  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_27 2.3346 -2.5071  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_28 1.9319 -3.1927  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_29 1.9215 -3.9640  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_30 2.3054 -4.6603  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_31 2.9632 -5.0631  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_32 3.7580 -5.0886  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_33 5.1486 -5.2853  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_34 6.5783 -2.7867  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_35 6.5912 -4.4524  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_36 2.0000 -1.4061  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_37 4.6638  3.8166  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_38 5.6720  0.0939  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_39 5.0204  4.4132  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_40 4.7061  5.2317  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_41 3.8876  4.9175  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_42 2.9879  4.2639  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_43 2.4361  3.5824  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_44 3.1175  3.0307  0  0  0  0  0  0   0   0   0   0   0   0   0
+## 
+## $CMP4
+##           C1      C2 C3 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16
+## S_1   7.1279  1.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_2   3.7320  3.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_3   2.0000  0.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_4   9.1279  1.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_5  13.6279 -2.7320  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_6  14.6279 -1.0000  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_7   5.5443  2.4028  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_8   3.7320  0.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_9   2.8660  2.0981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_10  5.5443  0.7933  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_11  9.1279 -0.1340  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_12  4.5981  2.0981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_13  4.5981  1.0981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_14  5.8550  3.3533  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_15  6.1279  1.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_16  3.7320  2.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_17  2.8660  1.0981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_18  3.7320 -0.4019  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_19  6.8335  3.5596  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_20  2.0000  2.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_21 10.6279 -1.0000  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_22  7.6279  0.7321  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_23 10.1279 -0.1340  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_24 11.6279 -1.0000  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_25  8.6279  0.7321  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_26 12.1279 -1.8660  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_27 12.1279 -0.1340  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_28 13.1279 -1.8660  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_29 13.6279 -1.0000  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_30 13.1279 -0.1340  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_31 13.1279 -3.5981  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_32 15.1279 -0.1340  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_33  5.8344  3.9730  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_34  5.2411  3.4407  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_35  3.1120 -0.4019  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_36  3.7320 -1.0219  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_37  4.3520 -0.4019  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_38  6.9613  2.9529  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_39  7.4401  3.6874  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_40  6.7056  4.1662  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_41  2.3100  3.1350  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_42  1.4631  2.9081  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_43  1.6900  2.0611  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_44 10.0453 -1.2120  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_45 10.7356 -1.6106  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_46  7.0453  0.5200  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_47  7.7356  0.1215  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_48 10.7105  0.0781  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_49 10.0202  0.4766  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_50  8.8179 -0.6709  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_51 11.8179 -2.4030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_52 11.8179  0.4030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_53 13.4379  0.4030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_54 12.5910 -3.2881  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_55 12.8179 -4.1350  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_56 13.6648 -3.9081  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_57 15.6648 -0.4440  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_58 15.4379  0.4030  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_59 14.5910  0.1760  0  0  0  0  0  0   0   0   0   0   0   0   0</code></pre>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chemical-properties-prediction-and-visualized..html#cb30-1" tabindex="-1"></a><span class="fu">atomblock</span>(sdfset[<span class="dv">1</span>])[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## $CMP1
+##           C1      C2 C3 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16
+## O_1   7.0468  0.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_2  12.2708  1.0492  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_3  12.2708  3.1186  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_4   7.9128  2.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_5   5.3147  0.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## O_6   2.0000  0.7475  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_7   7.9128 -1.4161  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_8   8.7788  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_9   4.4487  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## N_10  2.6691  1.4906  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_11  7.0468 -1.9161  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_12  6.1332 -1.5094  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_13  6.9422 -2.9106  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_14  5.4641 -2.2525  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_15  5.9641 -3.1186  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_16  7.9128 -0.4161  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_17  8.7788  0.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_18  9.6448  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_19  7.9128  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_20  7.0468  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_21 10.5109  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_22  9.6448  2.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_23 11.3769  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_24  6.1808  1.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_25 11.3769  2.5839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_26 10.5109  3.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_27 13.1769  1.5631  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_28 13.1769  2.6047  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_29  5.3147  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_30  3.5827  1.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_31  3.4782  0.0894  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_32  2.5000 -0.1185  0  0  0  0  0  0   0   0   0   0   0   0   0
+## C_33  2.0933 -1.0321  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_34  7.0143 -1.2970  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_35  6.4432 -0.9724  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_36  5.6316 -1.1450  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_37  7.0071 -3.5272  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_38  7.5622 -2.9106  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_39  5.0492 -1.7918  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_40  4.9625 -2.6170  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_41  5.3977 -3.3707  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_42  6.1557 -3.7082  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_43  8.4497 -1.7261  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_44  8.9909 -0.4987  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_45  9.3894  0.1915  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_46  6.6482  0.6089  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_47  7.4453  0.6089  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_48 10.5109  0.4639  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_49  9.1079  2.8939  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_50  6.5793  2.0588  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_51  5.7822  2.0588  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_52 10.5109  3.7039  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_53 13.3860  0.9794  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_54 13.7878  1.6692  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_55 13.7878  2.4986  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_56 13.3860  3.1884  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_57  4.4487  2.2039  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_58  3.9389 -0.3255  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_59  1.5269 -0.7799  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_60  1.8411 -1.5985  0  0  0  0  0  0   0   0   0   0   0   0   0
+## H_61  2.6597 -1.2843  0  0  0  0  0  0   0   0   0   0   0   0   0
+## 
+## $&lt;NA&gt;
+## NULL
+## 
+## $&lt;NA&gt;
+## NULL
+## 
+## $&lt;NA&gt;
+## NULL</code></pre>
+<p><strong>Bond block</strong></p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="chemical-properties-prediction-and-visualized..html#cb32-1" tabindex="-1"></a><span class="fu">bondblock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<pre><code>## $CMP1
+##    C1 C2 C3 C4 C5 C6 C7
+## 1   1 16  2  0  0  0  0
+## 2   2 23  1  0  0  0  0
+## 3   2 27  1  0  0  0  0
+## 4   3 25  1  0  0  0  0
+## 5   3 28  1  0  0  0  0
+## 6   4 19  2  0  0  0  0
+## 7   5 29  2  0  0  0  0
+## 8   6 10  1  0  0  0  0
+## 9   6 32  1  0  0  0  0
+## 10  7 11  1  0  0  0  0
+## 11  7 16  1  0  0  0  0
+## 12  7 43  1  0  0  0  0
+## 13  8 17  1  0  0  0  0
+## 14  8 18  1  0  0  0  0
+## 15  8 19  1  0  0  0  0
+## 16  9 29  1  0  0  0  0
+## 17  9 30  1  0  0  0  0
+## 18  9 57  1  0  0  0  0
+## 19 10 30  2  0  0  0  0
+## 20 11 12  1  0  0  0  0
+## 21 11 13  1  0  0  0  0
+## 22 11 34  1  0  0  0  0
+## 23 12 14  1  0  0  0  0
+## 24 12 35  1  0  0  0  0
+## 25 12 36  1  0  0  0  0
+## 26 13 15  1  0  0  0  0
+## 27 13 37  1  0  0  0  0
+## 28 13 38  1  0  0  0  0
+## 29 14 15  1  0  0  0  0
+## 30 14 39  1  0  0  0  0
+## 31 14 40  1  0  0  0  0
+## 32 15 41  1  0  0  0  0
+## 33 15 42  1  0  0  0  0
+## 34 16 17  1  0  0  0  0
+## 35 17 44  1  0  0  0  0
+## 36 17 45  1  0  0  0  0
+## 37 18 21  2  0  0  0  0
+## 38 18 22  1  0  0  0  0
+## 39 19 20  1  0  0  0  0
+## 40 20 24  1  0  0  0  0
+## 41 20 46  1  0  0  0  0
+## 42 20 47  1  0  0  0  0
+## 43 21 23  1  0  0  0  0
+## 44 21 48  1  0  0  0  0
+## 45 22 26  2  0  0  0  0
+## 46 22 49  1  0  0  0  0
+## 47 23 25  2  0  0  0  0
+## 48 24 29  1  0  0  0  0
+## 49 24 50  1  0  0  0  0
+## 50 24 51  1  0  0  0  0
+## 51 25 26  1  0  0  0  0
+## 52 26 52  1  0  0  0  0
+## 53 27 28  1  0  0  0  0
+## 54 27 53  1  0  0  0  0
+## 55 27 54  1  0  0  0  0
+## 56 28 55  1  0  0  0  0
+## 57 28 56  1  0  0  0  0
+## 58 30 31  1  0  0  0  0
+## 59 31 32  2  0  0  0  0
+## 60 31 58  1  0  0  0  0
+## 61 32 33  1  0  0  0  0
+## 62 33 59  1  0  0  0  0
+## 63 33 60  1  0  0  0  0
+## 64 33 61  1  0  0  0  0
+## 
+## $CMP2
+##    C1 C2 C3 C4 C5 C6 C7
+## 1   1 15  2  0  0  0  0
+## 2   2 18  2  0  0  0  0
+## 3   3 23  1  0  0  0  0
+## 4   3 49  1  0  0  0  0
+## 5   4  9  1  0  0  0  0
+## 6   4 10  1  0  0  0  0
+## 7   4 12  1  0  0  0  0
+## 8   5 13  1  0  0  0  0
+## 9   5 18  1  0  0  0  0
+## 10  5 20  1  0  0  0  0
+## 11  6 12  2  0  0  0  0
+## 12  6 13  1  0  0  0  0
+## 13  7 12  1  0  0  0  0
+## 14  7 16  1  0  0  0  0
+## 15  7 33  1  0  0  0  0
+## 16  8 15  1  0  0  0  0
+## 17  8 18  1  0  0  0  0
+## 18  8 36  1  0  0  0  0
+## 19  9 11  1  0  0  0  0
+## 20  9 27  1  0  0  0  0
+## 21  9 28  1  0  0  0  0
+## 22 10 13  2  0  0  0  0
+## 23 10 15  1  0  0  0  0
+## 24 11 14  1  0  0  0  0
+## 25 11 29  1  0  0  0  0
+## 26 11 30  1  0  0  0  0
+## 27 14 17  1  0  0  0  0
+## 28 14 31  1  0  0  0  0
+## 29 14 32  1  0  0  0  0
+## 30 16 19  1  0  0  0  0
+## 31 16 34  1  0  0  0  0
+## 32 16 35  1  0  0  0  0
+## 33 17 21  2  0  0  0  0
+## 34 17 22  1  0  0  0  0
+## 35 19 23  1  0  0  0  0
+## 36 19 37  1  0  0  0  0
+## 37 19 38  1  0  0  0  0
+## 38 20 39  1  0  0  0  0
+## 39 20 40  1  0  0  0  0
+## 40 20 41  1  0  0  0  0
+## 41 21 24  1  0  0  0  0
+## 42 21 42  1  0  0  0  0
+## 43 22 25  2  0  0  0  0
+## 44 22 43  1  0  0  0  0
+## 45 23 44  1  0  0  0  0
+## 46 23 45  1  0  0  0  0
+## 47 24 26  2  0  0  0  0
+## 48 24 46  1  0  0  0  0
+## 49 25 26  1  0  0  0  0
+## 50 25 47  1  0  0  0  0
+## 51 26 48  1  0  0  0  0
+## 
+## $CMP3
+##    C1 C2 C3 C4 C5 C6 C7
+## 1   1 23  1  0  0  0  0
+## 2   1 24  1  0  0  0  0
+## 3   2 15  1  0  0  0  0
+## 4   2 36  1  0  0  0  0
+## 5   3 18  2  0  0  0  0
+## 6   4 21  2  0  0  0  0
+## 7   5  9  1  0  0  0  0
+## 8   5 10  1  0  0  0  0
+## 9   5 15  1  0  0  0  0
+## 10  6 21  1  0  0  0  0
+## 11  6 24  1  0  0  0  0
+## 12  6 38  1  0  0  0  0
+## 13  7  8  1  0  0  0  0
+## 14  7 23  2  0  0  0  0
+## 15  8 24  2  0  0  0  0
+## 16  9 13  2  0  0  0  0
+## 17  9 14  1  0  0  0  0
+## 18 10 11  1  0  0  0  0
+## 19 10 27  1  0  0  0  0
+## 20 10 28  1  0  0  0  0
+## 21 11 12  1  0  0  0  0
+## 22 11 29  1  0  0  0  0
+## 23 11 30  1  0  0  0  0
+## 24 12 13  1  0  0  0  0
+## 25 12 31  1  0  0  0  0
+## 26 12 32  1  0  0  0  0
+## 27 13 16  1  0  0  0  0
+## 28 14 18  1  0  0  0  0
+## 29 14 19  2  0  0  0  0
+## 30 15 17  2  0  0  0  0
+## 31 16 20  2  0  0  0  0
+## 32 16 33  1  0  0  0  0
+## 33 17 18  1  0  0  0  0
+## 34 17 21  1  0  0  0  0
+## 35 19 20  1  0  0  0  0
+## 36 19 34  1  0  0  0  0
+## 37 20 35  1  0  0  0  0
+## 38 22 23  1  0  0  0  0
+## 39 22 25  1  0  0  0  0
+## 40 22 26  1  0  0  0  0
+## 41 22 37  1  0  0  0  0
+## 42 25 39  1  0  0  0  0
+## 43 25 40  1  0  0  0  0
+## 44 25 41  1  0  0  0  0
+## 45 26 42  1  0  0  0  0
+## 46 26 43  1  0  0  0  0
+## 47 26 44  1  0  0  0  0
+## 
+## $CMP4
+##    C1 C2 C3 C4 C5 C6 C7
+## 1   1 15  1  0  0  0  0
+## 2   1 22  1  0  0  0  0
+## 3   2 16  2  0  0  0  0
+## 4   3 17  2  0  0  0  0
+## 5   4 25  2  0  0  0  0
+## 6   5 28  1  0  0  0  0
+## 7   5 31  1  0  0  0  0
+## 8   6 29  1  0  0  0  0
+## 9   6 32  1  0  0  0  0
+## 10  7 12  1  0  0  0  0
+## 11  7 14  1  0  0  0  0
+## 12  7 15  1  0  0  0  0
+## 13  8 13  1  0  0  0  0
+## 14  8 17  1  0  0  0  0
+## 15  8 18  1  0  0  0  0
+## 16  9 16  1  0  0  0  0
+## 17  9 17  1  0  0  0  0
+## 18  9 20  1  0  0  0  0
+## 19 10 13  1  0  0  0  0
+## 20 10 15  2  0  0  0  0
+## 21 11 23  1  0  0  0  0
+## 22 11 25  1  0  0  0  0
+## 23 11 50  1  0  0  0  0
+## 24 12 13  2  0  0  0  0
+## 25 12 16  1  0  0  0  0
+## 26 14 19  1  0  0  0  0
+## 27 14 33  1  0  0  0  0
+## 28 14 34  1  0  0  0  0
+## 29 18 35  1  0  0  0  0
+## 30 18 36  1  0  0  0  0
+## 31 18 37  1  0  0  0  0
+## 32 19 38  1  0  0  0  0
+## 33 19 39  1  0  0  0  0
+## 34 19 40  1  0  0  0  0
+## 35 20 41  1  0  0  0  0
+## 36 20 42  1  0  0  0  0
+## 37 20 43  1  0  0  0  0
+## 38 21 23  1  0  0  0  0
+## 39 21 24  1  0  0  0  0
+## 40 21 44  1  0  0  0  0
+## 41 21 45  1  0  0  0  0
+## 42 22 25  1  0  0  0  0
+## 43 22 46  1  0  0  0  0
+## 44 22 47  1  0  0  0  0
+## 45 23 48  1  0  0  0  0
+## 46 23 49  1  0  0  0  0
+## 47 24 26  2  0  0  0  0
+## 48 24 27  1  0  0  0  0
+## 49 26 28  1  0  0  0  0
+## 50 26 51  1  0  0  0  0
+## 51 27 30  2  0  0  0  0
+## 52 27 52  1  0  0  0  0
+## 53 28 29  2  0  0  0  0
+## 54 29 30  1  0  0  0  0
+## 55 30 53  1  0  0  0  0
+## 56 31 54  1  0  0  0  0
+## 57 31 55  1  0  0  0  0
+## 58 31 56  1  0  0  0  0
+## 59 32 57  1  0  0  0  0
+## 60 32 58  1  0  0  0  0
+## 61 32 59  1  0  0  0  0</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chemical-properties-prediction-and-visualized..html#cb34-1" tabindex="-1"></a><span class="fu">bondblock</span>(sdfset[<span class="dv">1</span>])[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## $CMP1
+##    C1 C2 C3 C4 C5 C6 C7
+## 1   1 16  2  0  0  0  0
+## 2   2 23  1  0  0  0  0
+## 3   2 27  1  0  0  0  0
+## 4   3 25  1  0  0  0  0
+## 5   3 28  1  0  0  0  0
+## 6   4 19  2  0  0  0  0
+## 7   5 29  2  0  0  0  0
+## 8   6 10  1  0  0  0  0
+## 9   6 32  1  0  0  0  0
+## 10  7 11  1  0  0  0  0
+## 11  7 16  1  0  0  0  0
+## 12  7 43  1  0  0  0  0
+## 13  8 17  1  0  0  0  0
+## 14  8 18  1  0  0  0  0
+## 15  8 19  1  0  0  0  0
+## 16  9 29  1  0  0  0  0
+## 17  9 30  1  0  0  0  0
+## 18  9 57  1  0  0  0  0
+## 19 10 30  2  0  0  0  0
+## 20 11 12  1  0  0  0  0
+## 21 11 13  1  0  0  0  0
+## 22 11 34  1  0  0  0  0
+## 23 12 14  1  0  0  0  0
+## 24 12 35  1  0  0  0  0
+## 25 12 36  1  0  0  0  0
+## 26 13 15  1  0  0  0  0
+## 27 13 37  1  0  0  0  0
+## 28 13 38  1  0  0  0  0
+## 29 14 15  1  0  0  0  0
+## 30 14 39  1  0  0  0  0
+## 31 14 40  1  0  0  0  0
+## 32 15 41  1  0  0  0  0
+## 33 15 42  1  0  0  0  0
+## 34 16 17  1  0  0  0  0
+## 35 17 44  1  0  0  0  0
+## 36 17 45  1  0  0  0  0
+## 37 18 21  2  0  0  0  0
+## 38 18 22  1  0  0  0  0
+## 39 19 20  1  0  0  0  0
+## 40 20 24  1  0  0  0  0
+## 41 20 46  1  0  0  0  0
+## 42 20 47  1  0  0  0  0
+## 43 21 23  1  0  0  0  0
+## 44 21 48  1  0  0  0  0
+## 45 22 26  2  0  0  0  0
+## 46 22 49  1  0  0  0  0
+## 47 23 25  2  0  0  0  0
+## 48 24 29  1  0  0  0  0
+## 49 24 50  1  0  0  0  0
+## 50 24 51  1  0  0  0  0
+## 51 25 26  1  0  0  0  0
+## 52 26 52  1  0  0  0  0
+## 53 27 28  1  0  0  0  0
+## 54 27 53  1  0  0  0  0
+## 55 27 54  1  0  0  0  0
+## 56 28 55  1  0  0  0  0
+## 57 28 56  1  0  0  0  0
+## 58 30 31  1  0  0  0  0
+## 59 31 32  2  0  0  0  0
+## 60 31 58  1  0  0  0  0
+## 61 32 33  1  0  0  0  0
+## 62 33 59  1  0  0  0  0
+## 63 33 60  1  0  0  0  0
+## 64 33 61  1  0  0  0  0
+## 
+## $&lt;NA&gt;
+## NULL
+## 
+## $&lt;NA&gt;
+## NULL
+## 
+## $&lt;NA&gt;
+## NULL</code></pre>
+<p><strong>Data Block</strong></p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chemical-properties-prediction-and-visualized..html#cb36-1" tabindex="-1"></a><span class="fu">datablock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<pre><code>## $CMP1
+##                                                                                                                                                                PUBCHEM_COMPOUND_CID 
+##                                                                                                                                                                            &quot;650001&quot; 
+##                                                                                                                                                      PUBCHEM_COMPOUND_CANONICALIZED 
+##                                                                                                                                                                                 &quot;1&quot; 
+##                                                                                                                                                           PUBCHEM_CACTVS_COMPLEXITY 
+##                                                                                                                                                                               &quot;700&quot; 
+##                                                                                                                                                       PUBCHEM_CACTVS_HBOND_ACCEPTOR 
+##                                                                                                                                                                                 &quot;7&quot; 
+##                                                                                                                                                          PUBCHEM_CACTVS_HBOND_DONOR 
+##                                                                                                                                                                                 &quot;2&quot; 
+##                                                                                                                                                       PUBCHEM_CACTVS_ROTATABLE_BOND 
+##                                                                                                                                                                                 &quot;8&quot; 
+##                                                                                                                                                             PUBCHEM_CACTVS_SUBSKEYS 
+##                      &quot;AAADceB7uAAAAAAAAAAAAAAAAAAAAeIAAAA0QAAAAAAAAACRwAAAHgAUAAAACCzhkgYz9pPQBACpAKdycgCCCAAlIgApmKG+7NqNZjrEubuWOKrm1xvK6Ee1UAMAAEAAAgAAQAAAgAAEAACAAAAAAAAAAA==&quot; 
+##                                                                                                                                                          PUBCHEM_IUPAC_OPENEYE_NAME 
+##                                                                &quot;N&#39;-[2-(cyclopentylamino)-2-oxo-ethyl]-N&#39;-(2,3-dihydro-1,4-benzodioxin-6-yl)-N-(5-methylisoxazol-3-yl)butanediamide&quot; 
+##                                                                                                                                                              PUBCHEM_IUPAC_CAS_NAME 
+##                                                                 &quot;N&#39;-[2-(cyclopentylamino)-2-oxoethyl]-N&#39;-(2,3-dihydro-1,4-benzodioxin-6-yl)-N-(5-methyl-3-isoxazolyl)butanediamide&quot; 
+##                                                                                                                                                                  PUBCHEM_IUPAC_NAME 
+##                                                              &quot;N&#39;-[2-(cyclopentylamino)-2-oxoethyl]-N&#39;-(2,3-dihydro-1,4-benzodioxin-6-yl)-N-(5-methyl-1,2-oxazol-3-yl)butanediamide&quot; 
+##                                                                                                                                                       PUBCHEM_IUPAC_SYSTEMATIC_NAME 
+##                                                   &quot;N&#39;-[2-(cyclopentylamino)-2-oxidanylidene-ethyl]-N&#39;-(2,3-dihydro-1,4-benzodioxin-6-yl)-N-(5-methyl-1,2-oxazol-3-yl)butanediamide&quot; 
+##                                                                                                                                                      PUBCHEM_IUPAC_TRADITIONAL_NAME 
+##                                                                 &quot;N&#39;-[2-(cyclopentylamino)-2-keto-ethyl]-N&#39;-(2,3-dihydro-1,4-benzodioxin-6-yl)-N-(5-methylisoxazol-3-yl)succinamide&quot; 
+##                                                                                                                                                                  PUBCHEM_NIST_INCHI 
+## &quot;InChI=1S/C23H28N4O6/c1-15-12-20(26-33-15)25-21(28)8-9-23(30)27(14-22(29)24-16-4-2-3-5-16)17-6-7-18-19(13-17)32-11-10-31-18/h6-7,12-13,16H,2-5,8-11,14H2,1H3,(H,24,29)(H,25,26,28)&quot; 
+##                                                                                                                                                               PUBCHEM_NIST_INCHIKEY 
+##                                                                                                                                                       &quot;DFGRXLCBXZBMEZ-UHFFFAOYSA-N&quot; 
+##                                                                                                                                                                   PUBCHEM_XLOGP3_AA 
+##                                                                                                                                                                               &quot;1.5&quot; 
+##                                                                                                                                                                  PUBCHEM_EXACT_MASS 
+##                                                                                                                                                                        &quot;456.200885&quot; 
+##                                                                                                                                                           PUBCHEM_MOLECULAR_FORMULA 
+##                                                                                                                                                                        &quot;C23H28N4O6&quot; 
+##                                                                                                                                                            PUBCHEM_MOLECULAR_WEIGHT 
+##                                                                                                                                                                         &quot;456.49162&quot; 
+##                                                                                                                                                          PUBCHEM_OPENEYE_CAN_SMILES 
+##                                                                                                                     &quot;CC1=CC(=NO1)NC(=O)CCC(=O)N(CC(=O)NC2CCCC2)C3=CC4=C(C=C3)OCCO4&quot; 
+##                                                                                                                                                          PUBCHEM_OPENEYE_ISO_SMILES 
+##                                                                                                                     &quot;CC1=CC(=NO1)NC(=O)CCC(=O)N(CC(=O)NC2CCCC2)C3=CC4=C(C=C3)OCCO4&quot; 
+##                                                                                                                                                                 PUBCHEM_CACTVS_TPSA 
+##                                                                                                                                                                               &quot;123&quot; 
+##                                                                                                                                                         PUBCHEM_MONOISOTOPIC_WEIGHT 
+##                                                                                                                                                                        &quot;456.200885&quot; 
+##                                                                                                                                                                PUBCHEM_TOTAL_CHARGE 
+##                                                                                                                                                                                 &quot;0&quot; 
+##                                                                                                                                                            PUBCHEM_HEAVY_ATOM_COUNT 
+##                                                                                                                                                                                &quot;33&quot; 
+##                                                                                                                                                       PUBCHEM_ATOM_DEF_STEREO_COUNT 
+##                                                                                                                                                                                 &quot;0&quot; 
+##                                                                                                                                                      PUBCHEM_ATOM_UDEF_STEREO_COUNT 
+##                                                                                                                                                                                 &quot;0&quot; 
+##                                                                                                                                                       PUBCHEM_BOND_DEF_STEREO_COUNT 
+##                                                                                                                                                                                 &quot;0&quot; 
+##                                                                                                                                                      PUBCHEM_BOND_UDEF_STEREO_COUNT 
+##                                                                                                                                                                                 &quot;0&quot; 
+##                                                                                                                                                         PUBCHEM_ISOTOPIC_ATOM_COUNT 
+##                                                                                                                                                                                 &quot;0&quot; 
+##                                                                                                                                                             PUBCHEM_COMPONENT_COUNT 
+##                                                                                                                                                                                 &quot;1&quot; 
+##                                                                                                                                                          PUBCHEM_CACTVS_TAUTO_COUNT 
+##                                                                                                                                                                                &quot;16&quot; 
+##                                                                                                                                                             PUBCHEM_COORDINATE_TYPE 
+##                                                                                                                                                                            &quot;1 __ 3&quot; 
+##                                                                                                                                                             PUBCHEM_BONDANNOTATIONS 
+##                                     &quot;10  30  8 __ 18  21  8 __ 18  22  8 __ 21  23  8 __ 22  26  8 __ 23  25  8 __ 25  26  8 __ 30  31  8 __ 31  32  8 __ 6  10  8 __ 6  32  8 __ &quot; 
+## 
+## $CMP2
+##                                                                                                                                                                                       PUBCHEM_COMPOUND_CID 
+##                                                                                                                                                                                                   &quot;650002&quot; 
+##                                                                                                                                                                             PUBCHEM_COMPOUND_CANONICALIZED 
+##                                                                                                                                                                                                        &quot;1&quot; 
+##                                                                                                                                                                                  PUBCHEM_CACTVS_COMPLEXITY 
+##                                                                                                                                                                                                      &quot;497&quot; 
+##                                                                                                                                                                              PUBCHEM_CACTVS_HBOND_ACCEPTOR 
+##                                                                                                                                                                                                        &quot;5&quot; 
+##                                                                                                                                                                                 PUBCHEM_CACTVS_HBOND_DONOR 
+##                                                                                                                                                                                                        &quot;3&quot; 
+##                                                                                                                                                                              PUBCHEM_CACTVS_ROTATABLE_BOND 
+##                                                                                                                                                                                                        &quot;8&quot; 
+##                                                                                                                                                                                    PUBCHEM_CACTVS_SUBSKEYS 
+##                                             &quot;AAADceB7sAAAAAAAAAAAAAAAAAAAAWAAAAA8QAAAAAAAAFgBwAAAHgAQCAAADAjhngYzsJfMEgCoAydydACCgC0nEKAJ2IGoVMiIeCrA2TCUYIgqlyLIiGcQgIAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==&quot; 
+##                                                                                                                                                                                 PUBCHEM_IUPAC_OPENEYE_NAME 
+##                                                                                                                                     &quot;8-(3-hydroxypropylamino)-3-methyl-7-(3-phenylpropyl)purine-2,6-dione&quot; 
+##                                                                                                                                                                                     PUBCHEM_IUPAC_CAS_NAME 
+##                                                                                                                                     &quot;8-(3-hydroxypropylamino)-3-methyl-7-(3-phenylpropyl)purine-2,6-dione&quot; 
+##                                                                                                                                                                                         PUBCHEM_IUPAC_NAME 
+##                                                                                                                                     &quot;8-(3-hydroxypropylamino)-3-methyl-7-(3-phenylpropyl)purine-2,6-dione&quot; 
+##                                                                                                                                                                              PUBCHEM_IUPAC_SYSTEMATIC_NAME 
+##                                                                                                                                    &quot;3-methyl-8-(3-oxidanylpropylamino)-7-(3-phenylpropyl)purine-2,6-dione&quot; 
+##                                                                                                                                                                             PUBCHEM_IUPAC_TRADITIONAL_NAME 
+##                                                                                                                                             &quot;8-(3-hydroxypropylamino)-3-methyl-7-(3-phenylpropyl)xanthine&quot; 
+##                                                                                                                                                                                         PUBCHEM_NIST_INCHI 
+##                                                     &quot;InChI=1S/C18H23N5O3/c1-22-15-14(16(25)21-18(22)26)23(17(20-15)19-10-6-12-24)11-5-9-13-7-3-2-4-8-13/h2-4,7-8,24H,5-6,9-12H2,1H3,(H,19,20)(H,21,25,26)&quot; 
+##                                                                                                                                                                                      PUBCHEM_NIST_INCHIKEY 
+##                                                                                                                                                                              &quot;JIOQFGLCEPFQHB-UHFFFAOYSA-N&quot; 
+##                                                                                                                                                                                          PUBCHEM_XLOGP3_AA 
+##                                                                                                                                                                                                      &quot;2.2&quot; 
+##                                                                                                                                                                                         PUBCHEM_EXACT_MASS 
+##                                                                                                                                                                                                &quot;357.18009&quot; 
+##                                                                                                                                                                                  PUBCHEM_MOLECULAR_FORMULA 
+##                                                                                                                                                                                               &quot;C18H23N5O3&quot; 
+##                                                                                                                                                                                   PUBCHEM_MOLECULAR_WEIGHT 
+##                                                                                                                                                                                                &quot;357.40692&quot; 
+##                                                                                                                                                                                 PUBCHEM_OPENEYE_CAN_SMILES 
+##                                                                                                                                                          &quot;CN1C2=C(C(=O)NC1=O)N(C(=N2)NCCCO)CCCC3=CC=CC=C3&quot; 
+##                                                                                                                                                                                 PUBCHEM_OPENEYE_ISO_SMILES 
+##                                                                                                                                                          &quot;CN1C2=C(C(=O)NC1=O)N(C(=N2)NCCCO)CCCC3=CC=CC=C3&quot; 
+##                                                                                                                                                                                        PUBCHEM_CACTVS_TPSA 
+##                                                                                                                                                                                                     &quot;99.5&quot; 
+##                                                                                                                                                                                PUBCHEM_MONOISOTOPIC_WEIGHT 
+##                                                                                                                                                                                                &quot;357.18009&quot; 
+##                                                                                                                                                                                       PUBCHEM_TOTAL_CHARGE 
+##                                                                                                                                                                                                        &quot;0&quot; 
+##                                                                                                                                                                                   PUBCHEM_HEAVY_ATOM_COUNT 
+##                                                                                                                                                                                                       &quot;26&quot; 
+##                                                                                                                                                                              PUBCHEM_ATOM_DEF_STEREO_COUNT 
+##                                                                                                                                                                                                        &quot;0&quot; 
+##                                                                                                                                                                             PUBCHEM_ATOM_UDEF_STEREO_COUNT 
+##                                                                                                                                                                                                        &quot;0&quot; 
+##                                                                                                                                                                              PUBCHEM_BOND_DEF_STEREO_COUNT 
+##                                                                                                                                                                                                        &quot;0&quot; 
+##                                                                                                                                                                             PUBCHEM_BOND_UDEF_STEREO_COUNT 
+##                                                                                                                                                                                                        &quot;0&quot; 
+##                                                                                                                                                                                PUBCHEM_ISOTOPIC_ATOM_COUNT 
+##                                                                                                                                                                                                        &quot;0&quot; 
+##                                                                                                                                                                                    PUBCHEM_COMPONENT_COUNT 
+##                                                                                                                                                                                                        &quot;1&quot; 
+##                                                                                                                                                                                 PUBCHEM_CACTVS_TAUTO_COUNT 
+##                                                                                                                                                                                                       &quot;11&quot; 
+##                                                                                                                                                                                    PUBCHEM_COORDINATE_TYPE 
+##                                                                                                                                                                                                   &quot;1 __ 3&quot; 
+##                                                                                                                                                                                    PUBCHEM_BONDANNOTATIONS 
+## &quot;10  13  8 __ 10  15  8 __ 17  21  8 __ 17  22  8 __ 21  24  8 __ 22  25  8 __ 24  26  8 __ 25  26  8 __ 4  10  8 __ 4  12  8 __ 5  13  8 __ 5  18  8 __ 6  12  8 __ 6  13  8 __ 8  15  8 __ 8  18  8 __ &quot; 
+## 
+## $CMP3
+##                                                                                                                                                                                    PUBCHEM_COMPOUND_CID 
+##                                                                                                                                                                                                &quot;650003&quot; 
+##                                                                                                                                                                          PUBCHEM_COMPOUND_CANONICALIZED 
+##                                                                                                                                                                                                     &quot;1&quot; 
+##                                                                                                                                                                               PUBCHEM_CACTVS_COMPLEXITY 
+##                                                                                                                                                                                                   &quot;638&quot; 
+##                                                                                                                                                                           PUBCHEM_CACTVS_HBOND_ACCEPTOR 
+##                                                                                                                                                                                                     &quot;6&quot; 
+##                                                                                                                                                                              PUBCHEM_CACTVS_HBOND_DONOR 
+##                                                                                                                                                                                                     &quot;2&quot; 
+##                                                                                                                                                                           PUBCHEM_CACTVS_ROTATABLE_BOND 
+##                                                                                                                                                                                                     &quot;3&quot; 
+##                                                                                                                                                                                 PUBCHEM_CACTVS_SUBSKEYS 
+##                                          &quot;AAADceB7sABAAAAAAAAAAAAAAAAAAWAAAAA8QIAAAAAAAACxwAAAHgQYCAAADQzB2gQz0IPAAgiuAqVycACSAIJlIBkdiAE4RMiIIDronZGEIYhwiQLIyccYicCeAAACAAACAAAAAAQAAAQAAAAAAAAAAA==&quot; 
+##                                                                                                                                                                                      PUBCHEM_NIST_INCHI 
+##                                                        &quot;InChI=1S/C18H18N4O3S/c1-9(2)16-20-21-18(26-16)19-15(24)12-14(23)11-7-3-5-10-6-4-8-22(13(10)11)17(12)25/h3,5,7,9,25H,4,6,8H2,1-2H3,(H,19,21,24)&quot; 
+##                                                                                                                                                                                   PUBCHEM_NIST_INCHIKEY 
+##                                                                                                                                                                           &quot;RXPVMDMIDFRLFK-UHFFFAOYSA-N&quot; 
+##                                                                                                                                                                                       PUBCHEM_XLOGP3_AA 
+##                                                                                                                                                                                                   &quot;3.5&quot; 
+##                                                                                                                                                                                      PUBCHEM_EXACT_MASS 
+##                                                                                                                                                                                            &quot;370.109961&quot; 
+##                                                                                                                                                                               PUBCHEM_MOLECULAR_FORMULA 
+##                                                                                                                                                                                           &quot;C18H18N4O3S&quot; 
+##                                                                                                                                                                                PUBCHEM_MOLECULAR_WEIGHT 
+##                                                                                                                                                                                             &quot;370.42552&quot; 
+##                                                                                                                                                                              PUBCHEM_OPENEYE_CAN_SMILES 
+##                                                                                                                                                  &quot;CC(C)C1=NN=C(S1)NC(=O)C2=C(N3CCCC4=CC=CC(=C43)C2=O)O&quot; 
+##                                                                                                                                                                              PUBCHEM_OPENEYE_ISO_SMILES 
+##                                                                                                                                                  &quot;CC(C)C1=NN=C(S1)NC(=O)C2=C(N3CCCC4=CC=CC(=C43)C2=O)O&quot; 
+##                                                                                                                                                                                     PUBCHEM_CACTVS_TPSA 
+##                                                                                                                                                                                                  &quot;95.4&quot; 
+##                                                                                                                                                                             PUBCHEM_MONOISOTOPIC_WEIGHT 
+##                                                                                                                                                                                            &quot;370.109961&quot; 
+##                                                                                                                                                                                    PUBCHEM_TOTAL_CHARGE 
+##                                                                                                                                                                                                     &quot;0&quot; 
+##                                                                                                                                                                                PUBCHEM_HEAVY_ATOM_COUNT 
+##                                                                                                                                                                                                    &quot;26&quot; 
+##                                                                                                                                                                           PUBCHEM_ATOM_DEF_STEREO_COUNT 
+##                                                                                                                                                                                                     &quot;0&quot; 
+##                                                                                                                                                                          PUBCHEM_ATOM_UDEF_STEREO_COUNT 
+##                                                                                                                                                                                                     &quot;0&quot; 
+##                                                                                                                                                                           PUBCHEM_BOND_DEF_STEREO_COUNT 
+##                                                                                                                                                                                                     &quot;0&quot; 
+##                                                                                                                                                                          PUBCHEM_BOND_UDEF_STEREO_COUNT 
+##                                                                                                                                                                                                     &quot;0&quot; 
+##                                                                                                                                                                             PUBCHEM_ISOTOPIC_ATOM_COUNT 
+##                                                                                                                                                                                                     &quot;0&quot; 
+##                                                                                                                                                                                 PUBCHEM_COMPONENT_COUNT 
+##                                                                                                                                                                                                     &quot;1&quot; 
+##                                                                                                                                                                              PUBCHEM_CACTVS_TAUTO_COUNT 
+##                                                                                                                                                                                                    &quot;11&quot; 
+##                                                                                                                                                                                 PUBCHEM_COORDINATE_TYPE 
+##                                                                                                                                                                                                &quot;1 __ 3&quot; 
+##                                                                                                                                                                                 PUBCHEM_BONDANNOTATIONS 
+## &quot;1  23  8 __ 1  24  8 __ 13  16  8 __ 14  18  8 __ 14  19  8 __ 15  17  8 __ 16  20  8 __ 17  18  8 __ 19  20  8 __ 5  15  8 __ 5  9  8 __ 7  23  8 __ 7  8  8 __ 8  24  8 __ 9  13  8 __ 9  14  8 __ &quot; 
+## 
+## $CMP4
+##                                                                                                                                                                                         PUBCHEM_COMPOUND_CID 
+##                                                                                                                                                                                                     &quot;650004&quot; 
+##                                                                                                                                                                               PUBCHEM_COMPOUND_CANONICALIZED 
+##                                                                                                                                                                                                          &quot;1&quot; 
+##                                                                                                                                                                                    PUBCHEM_CACTVS_COMPLEXITY 
+##                                                                                                                                                                                                        &quot;698&quot; 
+##                                                                                                                                                                                PUBCHEM_CACTVS_HBOND_ACCEPTOR 
+##                                                                                                                                                                                                          &quot;6&quot; 
+##                                                                                                                                                                                   PUBCHEM_CACTVS_HBOND_DONOR 
+##                                                                                                                                                                                                          &quot;1&quot; 
+##                                                                                                                                                                                PUBCHEM_CACTVS_ROTATABLE_BOND 
+##                                                                                                                                                                                                          &quot;9&quot; 
+##                                                                                                                                                                                      PUBCHEM_CACTVS_SUBSKEYS 
+##                                               &quot;AAADceB7uABAAAAAAAAAAAAAAAAAAWAAAAA8QAAAAAAAAFgBwAAAHgQQAAAADAzF3gaztpfMFAioAydydACC2C1nMLAJ2IGu3MiNbirE+TuUMKos1zPKqGeQ0LIOIAABAAAAQABAAAIAAACAAAAAAAAAAA==&quot; 
+##                                                                                                                                                                                   PUBCHEM_IUPAC_OPENEYE_NAME 
+##                                                                                                           &quot;N-[2-(3,4-dimethoxyphenyl)ethyl]-2-(7-ethyl-1,3-dimethyl-2,6-dioxo-purin-8-yl)sulfanyl-acetamide&quot; 
+##                                                                                                                                                                                       PUBCHEM_IUPAC_CAS_NAME 
+##                                                                                                               &quot;N-[2-(3,4-dimethoxyphenyl)ethyl]-2-[(7-ethyl-1,3-dimethyl-2,6-dioxo-8-purinyl)thio]acetamide&quot; 
+##                                                                                                                                                                                           PUBCHEM_IUPAC_NAME 
+##                                                                                                             &quot;N-[2-(3,4-dimethoxyphenyl)ethyl]-2-(7-ethyl-1,3-dimethyl-2,6-dioxopurin-8-yl)sulfanylacetamide&quot; 
+##                                                                                                                                                                                PUBCHEM_IUPAC_SYSTEMATIC_NAME 
+##                                                                                              &quot;N-[2-(3,4-dimethoxyphenyl)ethyl]-2-[7-ethyl-1,3-dimethyl-2,6-bis(oxidanylidene)purin-8-yl]sulfanyl-ethanamide&quot; 
+##                                                                                                                                                                               PUBCHEM_IUPAC_TRADITIONAL_NAME 
+##                                                                                                                              &quot;2-[(7-ethyl-2,6-diketo-1,3-dimethyl-purin-8-yl)thio]-N-homoveratryl-acetamide&quot; 
+##                                                                                                                                                                                           PUBCHEM_NIST_INCHI 
+##                                                 &quot;InChI=1S/C21H27N5O5S/c1-6-26-17-18(24(2)21(29)25(3)19(17)28)23-20(26)32-12-16(27)22-10-9-13-7-8-14(30-4)15(11-13)31-5/h7-8,11H,6,9-10,12H2,1-5H3,(H,22,27)&quot; 
+##                                                                                                                                                                                        PUBCHEM_NIST_INCHIKEY 
+##                                                                                                                                                                                &quot;LPTGOTDBDBPVFJ-UHFFFAOYSA-N&quot; 
+##                                                                                                                                                                                            PUBCHEM_XLOGP3_AA 
+##                                                                                                                                                                                                          &quot;2&quot; 
+##                                                                                                                                                                                           PUBCHEM_EXACT_MASS 
+##                                                                                                                                                                                                  &quot;461.17329&quot; 
+##                                                                                                                                                                                    PUBCHEM_MOLECULAR_FORMULA 
+##                                                                                                                                                                                                &quot;C21H27N5O5S&quot; 
+##                                                                                                                                                                                     PUBCHEM_MOLECULAR_WEIGHT 
+##                                                                                                                                                                                                  &quot;461.53458&quot; 
+##                                                                                                                                                                                   PUBCHEM_OPENEYE_CAN_SMILES 
+##                                                                                                                                               &quot;CCN1C2=C(N=C1SCC(=O)NCCC3=CC(=C(C=C3)OC)OC)N(C(=O)N(C2=O)C)C&quot; 
+##                                                                                                                                                                                   PUBCHEM_OPENEYE_ISO_SMILES 
+##                                                                                                                                               &quot;CCN1C2=C(N=C1SCC(=O)NCCC3=CC(=C(C=C3)OC)OC)N(C(=O)N(C2=O)C)C&quot; 
+##                                                                                                                                                                                          PUBCHEM_CACTVS_TPSA 
+##                                                                                                                                                                                                        &quot;106&quot; 
+##                                                                                                                                                                                  PUBCHEM_MONOISOTOPIC_WEIGHT 
+##                                                                                                                                                                                                  &quot;461.17329&quot; 
+##                                                                                                                                                                                         PUBCHEM_TOTAL_CHARGE 
+##                                                                                                                                                                                                          &quot;0&quot; 
+##                                                                                                                                                                                     PUBCHEM_HEAVY_ATOM_COUNT 
+##                                                                                                                                                                                                         &quot;32&quot; 
+##                                                                                                                                                                                PUBCHEM_ATOM_DEF_STEREO_COUNT 
+##                                                                                                                                                                                                          &quot;0&quot; 
+##                                                                                                                                                                               PUBCHEM_ATOM_UDEF_STEREO_COUNT 
+##                                                                                                                                                                                                          &quot;0&quot; 
+##                                                                                                                                                                                PUBCHEM_BOND_DEF_STEREO_COUNT 
+##                                                                                                                                                                                                          &quot;0&quot; 
+##                                                                                                                                                                               PUBCHEM_BOND_UDEF_STEREO_COUNT 
+##                                                                                                                                                                                                          &quot;0&quot; 
+##                                                                                                                                                                                  PUBCHEM_ISOTOPIC_ATOM_COUNT 
+##                                                                                                                                                                                                          &quot;0&quot; 
+##                                                                                                                                                                                      PUBCHEM_COMPONENT_COUNT 
+##                                                                                                                                                                                                          &quot;1&quot; 
+##                                                                                                                                                                                   PUBCHEM_CACTVS_TAUTO_COUNT 
+##                                                                                                                                                                                                          &quot;2&quot; 
+##                                                                                                                                                                                      PUBCHEM_COORDINATE_TYPE 
+##                                                                                                                                                                                                     &quot;1 __ 3&quot; 
+##                                                                                                                                                                                      PUBCHEM_BONDANNOTATIONS 
+## &quot;10  13  8 __ 10  15  8 __ 12  13  8 __ 12  16  8 __ 24  26  8 __ 24  27  8 __ 26  28  8 __ 27  30  8 __ 28  29  8 __ 29  30  8 __ 7  12  8 __ 7  15  8 __ 8  13  8 __ 8  17  8 __ 9  16  8 __ 9  17  8 __ &quot;</code></pre>
+<div id="assigning-compound-ids-and-keeping-them-unique" class="section level3 hasAnchor" number="3.4.1">
+<h3><span class="header-section-number">3.4.1</span> Assigning compound IDS and keeping them unique<a href="chemical-properties-prediction-and-visualized..html#assigning-compound-ids-and-keeping-them-unique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Return IDs from SDFset object</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chemical-properties-prediction-and-visualized..html#cb38-1" tabindex="-1"></a><span class="fu">cid</span>(sdfset)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;CMP1&quot; &quot;CMP2&quot; &quot;CMP3&quot; &quot;CMP4&quot;</code></pre>
+<p>Returns IDs from SD file header</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chemical-properties-prediction-and-visualized..html#cb40-1" tabindex="-1"></a>unique_ids <span class="ot">&lt;-</span> <span class="fu">makeUnique</span>(<span class="fu">sdfid</span>(sdfset))</span></code></pre></div>
+<pre><code>## [1] &quot;No duplicates detected!&quot;</code></pre>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chemical-properties-prediction-and-visualized..html#cb42-1" tabindex="-1"></a><span class="fu">cid</span>(sdfset) <span class="ot">&lt;-</span> unique_ids</span></code></pre></div>
+</div>
+<div id="converting-the-data-blocks-in-an-sdfset-to-a-matrix" class="section level3 hasAnchor" number="3.4.2">
+<h3><span class="header-section-number">3.4.2</span> Converting the data blocks in an SDFset to a matrix<a href="chemical-properties-prediction-and-visualized..html#converting-the-data-blocks-in-an-sdfset-to-a-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>These data blocks can also be converted to a matrix by</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="chemical-properties-prediction-and-visualized..html#cb43-1" tabindex="-1"></a>blockmatrix <span class="ot">&lt;-</span> <span class="fu">datablock2ma</span>(<span class="at">datablocklist =</span> <span class="fu">datablock</span>(sdfset))</span></code></pre></div>
+<p>The matrix can also be split into numeric and character matrix by <code>splitNumChar()</code> function</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="chemical-properties-prediction-and-visualized..html#cb44-1" tabindex="-1"></a>numchar <span class="ot">&lt;-</span> <span class="fu">splitNumChar</span>(<span class="at">blockmatrix =</span> blockmatrix)</span></code></pre></div>
+<p>Slice the numeric matrix</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="chemical-properties-prediction-and-visualized..html#cb45-1" tabindex="-1"></a>numchar[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<pre><code>##        PUBCHEM_COMPOUND_CID PUBCHEM_COMPOUND_CANONICALIZED
+## 650001               650001                              1
+## 650002               650002                              1</code></pre>
+<p>Slice the character matrix</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="chemical-properties-prediction-and-visualized..html#cb47-1" tabindex="-1"></a>numchar[[<span class="dv">2</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">11</span>]</span></code></pre></div>
+<pre><code>##        PUBCHEM_MOLECULAR_FORMULA
+## 650001 &quot;C23H28N4O6&quot;             
+## 650002 &quot;C18H23N5O3&quot;             
+##        PUBCHEM_OPENEYE_CAN_SMILES                                     
+## 650001 &quot;CC1=CC(=NO1)NC(=O)CCC(=O)N(CC(=O)NC2CCCC2)C3=CC4=C(C=C3)OCCO4&quot;
+## 650002 &quot;CN1C2=C(C(=O)NC1=O)N(C(=N2)NCCCO)CCCC3=CC=CC=C3&quot;</code></pre>
+</div>
+<div id="compute-atom-frequency-matrix-molecular-weight-and-formula" class="section level3 hasAnchor" number="3.4.3">
+<h3><span class="header-section-number">3.4.3</span> Compute atom frequency matrix, molecular weight and formula<a href="chemical-properties-prediction-and-visualized..html#compute-atom-frequency-matrix-molecular-weight-and-formula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="chemical-properties-prediction-and-visualized..html#cb49-1" tabindex="-1"></a>propma <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">MF=</span><span class="fu">MF</span>(sdfset),</span>
+<span id="cb49-2"><a href="chemical-properties-prediction-and-visualized..html#cb49-2" tabindex="-1"></a>                     <span class="at">MW=</span><span class="fu">MW</span>(sdfset), <span class="fu">atomcountMA</span>(sdfset))</span>
+<span id="cb49-3"><a href="chemical-properties-prediction-and-visualized..html#cb49-3" tabindex="-1"></a></span>
+<span id="cb49-4"><a href="chemical-properties-prediction-and-visualized..html#cb49-4" tabindex="-1"></a>propma[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,]</span></code></pre></div>
+<pre><code>##                 MF       MW  C  H N O S F Cl
+## 650001  C23H28N4O6 456.4916 23 28 4 6 0 0  0
+## 650002  C18H23N5O3 357.4069 18 23 5 3 0 0  0
+## 650003 C18H18N4O3S 370.4255 18 18 4 3 1 0  0
+## 650004 C21H27N5O5S 461.5346 21 27 5 5 1 0  0</code></pre>
+<p>Assign matrix data to data block</p>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="chemical-properties-prediction-and-visualized..html#cb51-1" tabindex="-1"></a><span class="fu">datablock</span>(sdfset) <span class="ot">&lt;-</span> propma</span>
+<span id="cb51-2"><a href="chemical-properties-prediction-and-visualized..html#cb51-2" tabindex="-1"></a><span class="fu">datablock</span>(sdfset[<span class="dv">1</span>])</span></code></pre></div>
+<pre><code>## $`650001`
+##           MF           MW            C            H            N            O 
+## &quot;C23H28N4O6&quot;   &quot;456.4916&quot;         &quot;23&quot;         &quot;28&quot;          &quot;4&quot;          &quot;6&quot; 
+##            S            F           Cl 
+##          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;</code></pre>
+</div>
+<div id="string-searching-in-sdfset" class="section level3 hasAnchor" number="3.4.4">
+<h3><span class="header-section-number">3.4.4</span> String searching in SDFset<a href="chemical-properties-prediction-and-visualized..html#string-searching-in-sdfset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Returns the summary view of the matches</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="chemical-properties-prediction-and-visualized..html#cb53-1" tabindex="-1"></a><span class="fu">grepSDFset</span>(<span class="st">&quot;650001&quot;</span>, </span>
+<span id="cb53-2"><a href="chemical-properties-prediction-and-visualized..html#cb53-2" tabindex="-1"></a>           sdfset,</span>
+<span id="cb53-3"><a href="chemical-properties-prediction-and-visualized..html#cb53-3" tabindex="-1"></a>           <span class="at">field=</span><span class="st">&quot;datablock&quot;</span>,</span>
+<span id="cb53-4"><a href="chemical-properties-prediction-and-visualized..html#cb53-4" tabindex="-1"></a>           <span class="at">mode=</span><span class="st">&quot;subset&quot;</span>)</span></code></pre></div>
+<pre><code>## $`650001`
+## An instance of &quot;SDF&quot;
+## 
+## &lt;&lt;header&gt;&gt;
+##                             Molecule_Name 
+##                                  &quot;650001&quot; 
+##                                    Source 
+##                  &quot;  -OEChem-07071010512D&quot; 
+##                                   Comment 
+##                                        &quot;&quot; 
+##                               Counts_Line 
+## &quot; 61 64  0     0  0  0  0  0  0999 V2000&quot; 
+## 
+## &lt;&lt;atomblock&gt;&gt;
+##           C1      C2  C3  C5  C6  C7  C8  C9 C10 C11 C12 C13 C14 C15 C16
+## O_1   7.0468  0.0839   0   0   0   0   0   0   0   0   0   0   0   0   0
+## O_2  12.2708  1.0492   0   0   0   0   0   0   0   0   0   0   0   0   0
+## ...      ...     ... ... ... ... ... ... ... ... ... ... ... ... ... ...
+## H_60  1.8411 -1.5985   0   0   0   0   0   0   0   0   0   0   0   0   0
+## H_61  2.6597 -1.2843   0   0   0   0   0   0   0   0   0   0   0   0   0
+## 
+## &lt;&lt;bondblock&gt;&gt;
+##      C1  C2  C3  C4  C5  C6  C7
+## 1     1  16   2   0   0   0   0
+## 2     2  23   1   0   0   0   0
+## ... ... ... ... ... ... ... ...
+## 63   33  60   1   0   0   0   0
+## 64   33  61   1   0   0   0   0
+## 
+## &lt;&lt;datablock&gt;&gt; (9 data items)
+##           MF           MW            C            H              
+## &quot;C23H28N4O6&quot;   &quot;456.4916&quot;         &quot;23&quot;         &quot;28&quot;        &quot;...&quot;</code></pre>
+<p>Search by index</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="chemical-properties-prediction-and-visualized..html#cb55-1" tabindex="-1"></a><span class="fu">grepSDFset</span>(<span class="st">&quot;650001&quot;</span>, </span>
+<span id="cb55-2"><a href="chemical-properties-prediction-and-visualized..html#cb55-2" tabindex="-1"></a>           sdfset,</span>
+<span id="cb55-3"><a href="chemical-properties-prediction-and-visualized..html#cb55-3" tabindex="-1"></a>           <span class="at">field=</span><span class="st">&quot;datablock&quot;</span>,</span>
+<span id="cb55-4"><a href="chemical-properties-prediction-and-visualized..html#cb55-4" tabindex="-1"></a>           <span class="at">mode=</span><span class="st">&quot;index&quot;</span>)</span></code></pre></div>
+<pre><code>## 1 1 1 1 1 1 1 1 1 
+## 1 2 3 4 5 6 7 8 9</code></pre>
+</div>
+</div>
+<div id="molecular-visualization-in-r" class="section level2 hasAnchor" number="3.5">
+<h2><span class="header-section-number">3.5</span> Molecular visualization in R<a href="chemical-properties-prediction-and-visualized..html#molecular-visualization-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Export SDFset to SD file</p>
+<pre><code>write.SDF(sdfset[1:4], file=&quot;sub.sdf&quot;, sig=TRUE)</code></pre>
+<p>Plot molecule structure of one or many SDFs</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="chemical-properties-prediction-and-visualized..html#cb58-1" tabindex="-1"></a><span class="fu">plot</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">print=</span><span class="cn">FALSE</span>) <span class="co"># plots structures to R graphics device</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p>Compound viewing in web browser</p>
+<pre><code>sdf.visualize(sdfset[1:4])</code></pre>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="bioconductor-package.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/balsaedi/RCourse/edit/main/03-chemmineR.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/balsaedi/RCourse/blob/main/03-chemmineR.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

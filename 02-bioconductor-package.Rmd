@@ -1,1 +1,78 @@
 # Bioconductor Package 
+## Overview of the BioConductor package 
+
+## Installation of BioConductor package
+To install BioConductor run the below command
+
+```
+if (!requireNamespace("BiocManager", quitely=TRUE))
+     install.packages("BiocManager")
+ BiocManager::install("ChemmineR")
+```
+
+## Importing Data in R
+<at video 1hr 16min>
+
+## Writing Script of Code in R 
+Script are useful as they allow one to easily pick up where they left off on a project and progressively build and refine code and analysis. 
+
+They also allow one to easily reproduce analysis run earlier. 
+
+A script is a set of commands that usually includes commenting on what each piece of code intended to do 
+
+## Data Interface
+Follow the following steps when working with data from external interfaces; 
+
+- Refer CSv working file(filepath) e.g `test.csv`
+- Get the current working directory, `getwd()`
+- Set the current working directory `setwd()`. 
+
+<show a csv file screenshot> 
+
+### Reading the *.csv file 
+Reading the csv file 
+
+```{r}
+proteindata <- read.csv("data/test.csv")
+```
+
+and can be converted to a dataframe and explored 
+
+```{r}
+# just to confirm if the said data is a data frame 
+print(is.data.frame(proteindata))
+
+print(ncol(proteindata)) # count the number of columns 
+
+print(nrow(proteindata)) # count the number of records/rows/observations
+```
+
+### Analyzing the *.csv file 
+
+Get the max residues from protein data 
+```{r}
+objname1 <- max(proteindata$NO_RESIDUES)
+print(objname1)
+```
+
+Get the protein detail having the most residues. 
+
+- `subset()` is used to select and filter variables and observations. 
+```{r}
+objname2 <- subset(proteindata, NO_RESIDUES == max(NO_RESIDUES))
+print(objname2)
+```
+
+Get the protein detail having entry in PDB database
+```{r}
+objname3 <- subset(proteindata, DBNAME == "PDB")
+print(objname3)
+```
+
+Get the protein detail having more than 3 dimer from PDB database
+```{r}
+objname4 <- subset(proteindata, NO_DIMER > 3 & DBNAME == "PDB")
+print(objname4)
+```
+
+
