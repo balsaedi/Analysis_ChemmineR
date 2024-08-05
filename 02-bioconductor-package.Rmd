@@ -33,12 +33,12 @@ Follow the following steps when working with data from external interfaces;
 Reading the csv file 
 
 ```{r}
-proteindata <- read.csv("data/test.csv")
+proteindata <- read.csv("")
 ```
 
 and can be converted to a dataframe and explored 
 
-```{r}
+```
 # just to confirm if the said data is a data frame 
 print(is.data.frame(proteindata))
 
@@ -51,28 +51,5 @@ print(nrow(proteindata)) # count the number of records/rows/observations
 
 Get the max residues from protein data 
 ```{r}
-objname1 <- max(proteindata$NO_RESIDUES)
-print(objname1)
+
 ```
-
-Get the protein detail having the most residues. 
-
-- `subset()` is used to select and filter variables and observations. 
-```{r}
-objname2 <- subset(proteindata, NO_RESIDUES == max(NO_RESIDUES))
-print(objname2)
-```
-
-Get the protein detail having entry in PDB database
-```{r}
-objname3 <- subset(proteindata, DBNAME == "PDB")
-print(objname3)
-```
-
-Get the protein detail having more than 3 dimer from PDB database
-```{r}
-objname4 <- subset(proteindata, NO_DIMER > 3 & DBNAME == "PDB")
-print(objname4)
-```
-
-

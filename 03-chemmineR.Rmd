@@ -151,9 +151,29 @@ Compound viewing in web browser
 sdf.visualize(sdfset[1:4])
 ```
 
+## Simple data analysis 
+```{r}
+csvfile <- read.csv(file.choose(), header=TRUE)
+# choose data.csv in the 'data' directory
+```
+
+Calculate the mean of the salary
+```{r}
+# attach the file inorder to avoid the $ sign
+attach(csvfile)
+
+mean(Salary)
+```
+
+```{r}
+# find the column names 
+names(csvfile)
+```
 
 
+Now, lets jump to the protein data set 
+```{r}
+# Load the data set 
+proteindata <- read.csv("data/test.csv")
 
-
-
-
+```
