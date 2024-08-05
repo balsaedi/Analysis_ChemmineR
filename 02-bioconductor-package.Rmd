@@ -33,7 +33,7 @@ Follow the following steps when working with data from external interfaces;
 Reading the csv file 
 
 ```{r}
-proteindata <- read.csv("")
+proteindata <- read.csv("data/test.csv")
 ```
 
 and can be converted to a dataframe and explored 
@@ -49,7 +49,70 @@ print(nrow(proteindata)) # count the number of records/rows/observations
 
 ### Analyzing the *.csv file 
 
-Get the max residues from protein data 
 ```{r}
-
+csvfile <- read.csv("data/data.csv", header=TRUE)
+#csvfile <- read.csv(file.choose(), header=TRUE)
+# choose data.csv in the 'data' directory
 ```
+
+Calculate the mean of the salary
+```{r}
+# attach the file inorder to avoid the $ sign
+attach(csvfile)
+
+mean(Salary)
+```
+
+```{r}
+# find the column names 
+names(csvfile)
+```
+
+
+Now, lets jump to the protein data set 
+```{r}
+# Load the data set 
+proteindata <- read.csv("data/test.csv")
+proteindata
+```
+
+
+Convert it to dataframe and count rows, columns 
+```{r}
+print(is.data.frame(proteindata))
+ncol(proteindata)
+row(proteindata)
+```
+
+Get the protein detail having the most residues and the max residues value.
+```{r}
+objname1 <- max(proteindata$NO_RESIDUES)
+objname1
+
+objname2 <- subset(proteindata, NO_RESIDUES == max(NO_RESIDUES))
+objname2
+```
+
+Get the protein detail having entry in PDB database
+```{r}
+objname3 <- subset(proteindata, DBNAME == "PDB")
+print(objname3)
+```
+
+Get the protein detail having more than 3 dimer from PDB database
+```{r}
+objname5 <- subset(proteindata, as.Date(DEPOSITED_DATE) > as.Date("2014-05-05"))
+print(objname5)
+```
+
+
+
+
+
+
+
+
+
+
+
+

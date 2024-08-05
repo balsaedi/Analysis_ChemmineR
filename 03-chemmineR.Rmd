@@ -112,7 +112,7 @@ propma[1:4,]
 Assign matrix data to data block 
 ```{r}
 datablock(sdfset) <- propma
-datablock(sdfset[1])
+datablock(sdfset[1]) # call the first compound in the databases 
 ```
 
 ### String searching in SDFset
@@ -136,8 +136,8 @@ grepSDFset("650001",
 
 Export SDFset to SD file 
 
-```
-write.SDF(sdfset[1:4], file="sub.sdf", sig=TRUE)
+```{r}
+write.SDF(sdfset[1:4], file="data/sub.sdf", sig=TRUE)
 ```
 
 Plot molecule structure of one or many SDFs
@@ -151,29 +151,12 @@ Compound viewing in web browser
 sdf.visualize(sdfset[1:4])
 ```
 
-## Simple data analysis 
+You save the image of the visualization
 ```{r}
-csvfile <- read.csv(file.choose(), header=TRUE)
-# choose data.csv in the 'data' directory
+save.image("nstc.Rdata")
 ```
 
-Calculate the mean of the salary
-```{r}
-# attach the file inorder to avoid the $ sign
-attach(csvfile)
+# Resources
+The complete documentation (with code) of the `ChemmineR` package can be found below here 
+- https://www.bioconductor.org/packages/release/bioc/vignettes/ChemmineR/inst/doc/ChemmineR.html
 
-mean(Salary)
-```
-
-```{r}
-# find the column names 
-names(csvfile)
-```
-
-
-Now, lets jump to the protein data set 
-```{r}
-# Load the data set 
-proteindata <- read.csv("data/test.csv")
-
-```
