@@ -8,9 +8,10 @@ chemoinformatics
 related-aspects
 chemoinformatic-tasks
 application-of-chemoinformatics-in-the-drug-industry
-drug-bank-inteface
-pubchem-interface
+the-drug-bank
+the-pubchem
 zinc-databases
+small-molecule-db
 why-chemminer-tool
 overview-of-chemmine-web-tool
 exploring-drug-like-molecules-databases
