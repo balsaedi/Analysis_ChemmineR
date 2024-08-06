@@ -101,18 +101,47 @@ The drug Bank database is a comprehensive freely accessible, online database con
 
 The homepage of this online database can be accessed anywhere by the link below 
 
-https://www.drugbank.com/
+https://www.drugbank.ca/
 
 The homepage will show up as below
 ![drugbank homepage](images/screenshots/drugBank/homepage.png)
 
-The information includes the drug chemical structures, mechanisms of action, interactions, and pharmacological data 
+The information includes the drug chemical structures, mechanisms of action, interactions, and pharmacological data. In this course, we will analyze the Amoxicillin drug which is a small molecule using the Drug Bank. Follow the steps below; 
+
+- Visit the Drug Bank homepage at https://www.drugbank.ca/. The homepage will show up. 
+- Click at the search bar on top of the page and type `"Amoxicillin"` and enter to search. The search results for Amoxicillin will probably show up as t below
+![Amoxycillin search](images/screenshots/drugBank/Amoxicillin-search-results.png)
+
+- Scroll down to the structure section to view its chemical structure. It will show up as 
+![Amoxycillin chemical structure](images/screenshots/drugBank/Amoxicillin-chemical-structure.png)
+
+Amoxicillin is a broad-spectrum antibiotic used to treat various bacterial infections. Its molecular formula is C16H19N3O5S with a molecular weight of 365.4 g/mol. Amoxicillin inhibits bacterial cell wall synthesis, leading to bacterial cell death. It is effective against a range of Gram-positive and Gram-negative bacteria.
+
+Amoxicillin is well-absorbed orally and is stable in gastric acid. It is primarily excreted unchanged in the urine. Common side effects include gastrointestinal issues and skin rash, with severe allergic reactions being rare but possible. Amoxicillin can interact with drugs like methotrexate and oral contraceptives.
+
+There is more information, this is just but a summary. For more information visit the [DrugBank entry for Amoxicillin](https://go.drugbank.com/drugs/DB01060)
 
 #### The PubChem
 PubChem is the world's largest collection of freely accessible chemical information. Search chemicals by name, molecular formula, structure, and other identifiers. Find chemical and physical properties, biological activities, safety and toxicity information, patents, literature citations and more. 
 
-Topics 
-  - PubChem depositories
+This website is maintained by the National Center for Biotechnology Information (NCBI) and includes information on chemical compounds, substances and bioassays. 
+
+In this course, we will use the PubChem website to analyze the Aspirin drug. For effective analysis, the following steps will be followed; 
+
+- Visit the PubChem website at https://pubchem.ncbi.nlm.nih.gov/. The homepage below will show up. 
+![pubChem homepage](images/screenshots/pubChem/homepage.png)
+- Click the search bar at the center, type `"Aspirin"` then press "enter". There will be numerous entries from the search results as shown below
+![Aspirin Search Results](images/screenshots/pubChem/Aspirin-search-results.png)
+- The website provides the best matches but select the most preferred result that fits your reseacrh needs. In this case we will go with the best match, `Aspirin(CID 2244)`. 
+- The PubChem website will provide the details of the Aspirin drug as;
+
+![Aspirin Chemical Structure](images/screenshots/pubChem/Aspirin-chemical-structure.png).
+
+Aspirin (acetylsalicylic acid) is a widely used medication for pain relief, fever reduction, and anti-inflammatory purposes. It has a molecular formula of C9H8O4 and a molecular weight of 180.16 g/mol. Aspirin works by inhibiting cyclooxygenase enzymes, reducing the production of prostaglandins and thromboxanes, which alleviates pain and inflammation.
+
+Aspirin is rapidly absorbed from the gastrointestinal tract and widely distributed in body tissues. It is metabolized in the liver and excreted primarily through the kidneys. Common side effects include gastrointestinal irritation and increased risk of bleeding. Aspirin can interact with various drugs, including anticoagulants and other NSAIDs.
+
+This is just but a summary from the PuChem entry for Aspirin, for more detailed information visit https://pubchem.ncbi.nlm.nih.gov/compound/2244
 
 #### Zinc Databases
 It is a free database of commercially-available compounds for virtually screening and contains over 230 millions purchasable compounds in ready-to-dock, 3D formats. ZINC also contains over 750 million purchasable compounds. It is provided by Irwin and Shoichet Laboratories in the Department of Pharmaceutical Chemistry at the University of California San Francisco (UCSF). 
