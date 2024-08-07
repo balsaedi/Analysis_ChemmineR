@@ -4,8 +4,6 @@ outcome
 informatics
 bioinformatics
 chemoinformatics
-related-aspects
-chemoinformatic-tasks
 application-of-chemoinformatics-in-the-drug-industry
 small-molecule
 chemical-databases

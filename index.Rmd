@@ -8,32 +8,38 @@ site: bookdown::bookdown_site
 
 ## Objectives
 The objectives of this project is to;
+
 - predict the physicochemical/structural properties, structural similarity searching, classification and clustering of drug like molecular library.
 - to visualize the functions for compound clustering results and chemical structures. 
 
 ## Outcome
-Learner will able to analyze the drug like small molecule in R
+Learner will able to analyze the drug-like small molecule in R
 
 ## Informatics
-Bioinformatics and Chemoinformatics come from the informatics. 
+Informatics refers to the study , design and application of computer and information systems to solve problems and improve processes in various domains. 
+These are some of the aspects covered in informatics;
+
+- Health informatics
+- Bioinformatics 
+- Data Informatics 
+- Clinical informatics
+- Cheminformatics 
+- Social informatics 
+- Business informatics
+
+This course will focus exclusively on Bioinformatics and Chemoinformatics.
 
 ### Bioinformatics 
 It is the information technology designed to generate and access biological data and derive information from it. 
 
 ### Chemoinformatics 
-It is the information technology used to design molecular libraries that interact with the identified targets 
+It is the information technology used to design molecular libraries that interact with the identified targets  
+<br/>
+  
+<span style="color: red;">**NOTE:** </span>
+Bioinformatics and chemoinformatics are generic terms that encompass the design, creation, organization, management, retrieval, analysis, identification, visualization and use of chemical and biological information.
 
-### Related aspects 
-Bioinformatics and chemoinformatics are generic terms that encompass the design, creation, organization, management, retrieval, analysis, diddemination, visualization and use of chemical and biological information. 
-
-IT for managing chemical information and solving chemical problems. 
-
-Chemistry + Information science + Computer Science
-
-Driven by drug recovery research
-
-### Chemoinformatic tasks 
-It will be used to manage information such as;
+In this course,it will be used to manage information such as;
 
 - Chemical properties
 - Chemical synthesis
@@ -50,7 +56,8 @@ The computer is used to analyze the interactions between the drug and the recept
 
 Once targets are developed are developed, libraries of compounds are screened for activity with one or more relevant assays using High Throughput Screening. 
 
-**HITS (High Throughput Screening)**
+**HITS (High Throughput Screening)**  
+<br>
 The Biochemical target is identified and many compounds are tested on it. The compound with desired effect on the target are selected by HITS. 
 
 HITS is directly used as chemical probe to study the target and it provides the structure for chemists to begin developing a drug or other product. 
@@ -110,9 +117,11 @@ Amoxicillin is well-absorbed orally and is stable in gastric acid. It is primari
 There is more information, this is just but a summary. For more information visit the [DrugBank entry for Amoxicillin](https://go.drugbank.com/drugs/DB01060)
 
 #### The PubChem
-PubChem is the world's largest collection of freely accessible chemical information. Search chemicals by name, molecular formula, structure, and other identifiers. Find chemical and physical properties, biological activities, safety and toxicity information, patents, literature citations and more. 
+PubChem is the world's largest collection of freely accessible chemical information. The chemicals are searched by their name, molecular formula, structure, and other identifiers. Find chemical and physical properties, biological activities, safety and toxicity information, patents, literature citations and more. 
 
 This website is maintained by the National Center for Biotechnology Information (NCBI) and includes information on chemical compounds, substances and bioassays. 
+
+Bioassay is a scientific method that measures the effect of a substance on living organisms, such as plants, cells, or tissues. 
 
 In this course, we will use the PubChem website to analyze the Aspirin drug. For effective analysis, the following steps will be followed; 
 
