@@ -1,5 +1,4 @@
 analysis-of-drug-like-molecule-using-chemminer
-chemminer-installation
 objectives
 outcome
 informatics
@@ -8,10 +7,11 @@ chemoinformatics
 related-aspects
 chemoinformatic-tasks
 application-of-chemoinformatics-in-the-drug-industry
+small-molecule
+chemical-databases
 the-drug-bank
 the-pubchem
-zinc-databases
-small-molecule-db
+the-zinc-interface
 why-chemminer-tool
 overview-of-chemmine-web-tool
 exploring-drug-like-molecules-databases

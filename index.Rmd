@@ -6,21 +6,6 @@ site: bookdown::bookdown_site
 ---
 # Analysis of Drug like Molecule using ChemmineR
 
-## ChemmineR Installation
-
-```
-if (!requireNamespace("BiocManager"))
-     install.packages("BiocManager")
- BiocManager::install("ChemmineR")
-```
-
-Load the library
-```{r}
-library("ChemmineR")
-```
-
-*ChemmineR* is a chemoinformatics package for analysing drug-like small molecule data in R
-
 ## Objectives
 The objectives of this project is to;
 - predict the physicochemical/structural properties, structural similarity searching, classification and clustering of drug like molecular library.
@@ -89,12 +74,15 @@ The potential drug candidates should be in line with Lipinski's Rule of 5, accor
 - Have a number of rotatable bond less than 10
 
 
+#### Small Molecule
+ A small molecule is a low molecular weight organic compound which is by definition not a polymer. In pharmacology, 'small molecule' is usually restricted to a molecule that also binds with high affinity to a biopolymer such as protein, nucleic acid, or polysaccharide and in addition alters the activity or function of biopolymer
+ 
+### Chemical databases
 There are many chemical databases, here are some of them;
 
 - Drugbank
 - Pubchem
 - Zinc
-- Small molecule DB
 
 #### The Drug Bank
 The drug Bank database is a comprehensive freely accessible, online database containing information on drugs and drug targets created and maintained by the University of Alberta and The Metabolomics Innovation Centre located in Alberta, Canada in 2006. 
@@ -143,17 +131,31 @@ Aspirin is rapidly absorbed from the gastrointestinal tract and widely distribut
 
 This is just but a summary from the PuChem entry for Aspirin, for more detailed information visit https://pubchem.ncbi.nlm.nih.gov/compound/2244
 
-#### Zinc Databases
+#### The ZINC Interface
 It is a free database of commercially-available compounds for virtually screening and contains over 230 millions purchasable compounds in ready-to-dock, 3D formats. ZINC also contains over 750 million purchasable compounds. It is provided by Irwin and Shoichet Laboratories in the Department of Pharmaceutical Chemistry at the University of California San Francisco (UCSF). 
 
 This is curated collected of commercially available chemical compounds prepared especially for virtual screening. 
 
 The database contains over 37 million enumerated searchable, commercially available compounds in 2D, over 4.5 billion of which have been built in biologically relevant ready-to-dock 3D formats. The database can be searched online using whole-molecule similarity, substructure, and patterns in 2D
 
-- Add how the database works and its interface. How molecules are sketched
+The guide below will demonstrate how to analyze the Ibuprofen drug using the ZINC interface step by step. Any other drug can be analyzed using the same technique. 
 
-#### Small Molecule DB
- A small molecule is a low molecular weight organic compound which is by definition not a polymer. In pharmacology, 'small molecule' is usually restricted to a molecule that also binds with high affinity to a biopolymer such as protein, nucleic acid, or polysaccharide and in addition alters the activity or function of biopolymer
+- Visit the ZINC database website at http://zinc.docking.org/ using web browser of your choice. The ZINC homepage will show as below. 
+![ZINC homepage](images/screenshots/zinc/homepage.png)
+
+- Navigate tp the `"substances"` tab on top of the page. The page below ill appear. Click on the search bar on top-left corner of the page, type `"Ibuprofen"` and press enter to search. 
+![Ibuprofen search results](images/screenshots/zinc/zinc-search-bar.png)
+- More than one type of Ibuporofen will show up. In this case, we are interested on ZINC2647(Ibuprofen) which will probably appear on the top. Click it to show the details. 
+- The details of Ibuprofen will display as; 
+![Ibuprofen results](images/screenshots/zinc/ibuprofen-results.png)
+
+Here's an example summary of what you might find:
+
+Ibuprofen is a nonsteroidal anti-inflammatory drug (NSAID) used for pain relief, fever reduction, and anti-inflammatory purposes. It has a molecular formula of C13H18O2 and a molecular weight of 206.28 g/mol. Ibuprofen inhibits cyclooxygenase enzymes (COX-1 and COX-2), leading to decreased production of prostaglandins and reducing inflammation and pain.
+
+Ibuprofen is rapidly absorbed from the gastrointestinal tract and widely distributed throughout the body. It is metabolized in the liver and excreted primarily through the kidneys. Common side effects include gastrointestinal irritation and an increased risk of bleeding, especially with prolonged use.
+
+For further information visit https://zinc.docking.org/substances/ZINC000000002647/
 
 
 ## Why ChemmineR tool 
