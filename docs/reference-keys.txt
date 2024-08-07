@@ -10,9 +10,8 @@ chemical-databases
 the-drug-bank
 the-pubchem
 the-zinc-interface
-why-chemminer-tool
+the-chemminer-tool
 overview-of-chemmine-web-tool
-exploring-drug-like-molecules-databases
 bioconductor-package
 overview-of-the-bioconductor-package
 installation-of-bioconductor-package

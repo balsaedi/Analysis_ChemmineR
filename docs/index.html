@@ -151,11 +151,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.3.3" data-path="index.html"><a href="index.html#application-of-chemoinformatics-in-the-drug-industry"><i class="fa fa-check"></i><b>1.3.3</b> Application of Chemoinformatics in the Drug Industry</a></li>
 <li class="chapter" data-level="1.3.4" data-path="index.html"><a href="index.html#chemical-databases"><i class="fa fa-check"></i><b>1.3.4</b> Chemical databases</a></li>
 </ul></li>
-<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#why-chemminer-tool"><i class="fa fa-check"></i><b>1.4</b> Why ChemmineR tool</a>
+<li class="chapter" data-level="1.4" data-path="index.html"><a href="index.html#the-chemminer-tool"><i class="fa fa-check"></i><b>1.4</b> The ChemmineR tool</a>
 <ul>
 <li class="chapter" data-level="1.4.1" data-path="index.html"><a href="index.html#overview-of-chemmine-web-tool"><i class="fa fa-check"></i><b>1.4.1</b> Overview of Chemmine web tool</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="index.html"><a href="index.html#exploring-drug-like-molecules-databases"><i class="fa fa-check"></i><b>1.5</b> Exploring drug like molecules databases</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="bioconductor-package.html"><a href="bioconductor-package.html"><i class="fa fa-check"></i><b>2</b> Bioconductor Package</a>
 <ul>
@@ -224,7 +223,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="informatics" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Informatics<a href="index.html#informatics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Informatics refers to the study , design and application of computer and information systems to solve problems and improve processes in various domains.
+<p>Informatics refers to the study, design and application of computer and information systems to solve problems and improve processes in various domains.
 These are some of the aspects covered in informatics;</p>
 <ul>
 <li>Health informatics</li>
@@ -261,7 +260,6 @@ Bioinformatics and chemoinformatics are generic terms that encompass the design,
 <p>The computer is used to analyze the interactions between the drug and the receptor site and design molecules with an optimal fit.</p>
 <p>Once targets are developed are developed, libraries of compounds are screened for activity with one or more relevant assays using High Throughput Screening.</p>
 <p><strong>HITS (High Throughput Screening)</strong><br />
-<br>
 The Biochemical target is identified and many compounds are tested on it. The compound with desired effect on the target are selected by HITS.</p>
 <p>HITS is directly used as chemical probe to study the target and it provides the structure for chemists to begin developing a drug or other product.</p>
 <p>Hits are then evaluated for binding, potency, selectivity, and functional activity.</p>
@@ -343,7 +341,7 @@ The Biochemical target is identified and many compounds are tested on it. The co
 <img src="images/screenshots/zinc/homepage.png" alt="ZINC homepage" /></p></li>
 <li><p>Navigate tp the <code>"substances"</code> tab on top of the page. The page below ill appear. Click on the search bar on top-left corner of the page, type <code>"Ibuprofen"</code> and press enter to search.
 <img src="images/screenshots/zinc/zinc-search-bar.png" alt="Ibuprofen search results" /></p></li>
-<li><p>More than one type of Ibuporofen will show up. In this case, we are interested on ZINC2647(Ibuprofen) which will probably appear on the top. Click it to show the details.</p></li>
+<li><p>More than one type of Ibuprofen will show up. In this case, we are interested on ZINC2647(Ibuprofen) which will probably appear on the top. Click it to show the details.</p></li>
 <li><p>The details of Ibuprofen will display as;
 <img src="images/screenshots/zinc/ibuprofen-results.png" alt="Ibuprofen results" /></p></li>
 </ul>
@@ -354,22 +352,34 @@ The Biochemical target is identified and many compounds are tested on it. The co
 </div>
 </div>
 </div>
-<div id="why-chemminer-tool" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Why ChemmineR tool<a href="index.html#why-chemminer-tool" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p><code>ChemmineR</code> is a chemoinformatics package for analyzing drug-like small molecule data in R . In addition, `ChemmineR offers visualization functions for compounds clustering results and chemical structures.</p>
-<p>The integration of chemoinformatics tools with the R programming environment has many advantages, such as aeasy access to a wide spectrum of statistical methods, machine learning algorithms and graphic utilities.</p>
-<p><code>ChemmineR</code> is an online service for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types.</p>
-<p>&lt;Check min 1hr 5mins&gt;</p>
+<div id="the-chemminer-tool" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> The ChemmineR tool<a href="index.html#the-chemminer-tool" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>ChemmineR is a chemoinformatics package for analyzing drug-like small molecule data in R . In addition, <code>ChemmineR</code> offers visualization functions for compounds clustering results and chemical structures.</p>
+<p>The integration of chemoinformatics tools with the R programming environment has many advantages, such as easy access to a wide spectrum of statistical methods, machine learning algorithms and graphic utilities.</p>
+<p><code>ChemmineR</code> is exclussively used for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types.</p>
+<p>There are two ways to analyze a drug-like molecule using ChemmineR, they are:</p>
+<ul>
+<li>Web interface</li>
+<li>ChemmineR library under the <code>Bioconductor</code> package.</li>
+</ul>
 <div id="overview-of-chemmine-web-tool" class="section level3 hasAnchor" number="1.4.1">
 <h3><span class="header-section-number">1.4.1</span> Overview of Chemmine web tool<a href="index.html#overview-of-chemmine-web-tool" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p><add the web interface></p>
-<p>Chemmine WEb Tools is an online service for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types. Compounds can be imported into the workbench by drawing structures in the web browser, copy and paste, from local files, or from a PubChem search which includes an online molecular editor.</p>
-</div>
-</div>
-<div id="exploring-drug-like-molecules-databases" class="section level2 hasAnchor" number="1.5">
-<h2><span class="header-section-number">1.5</span> Exploring drug like molecules databases<a href="index.html#exploring-drug-like-molecules-databases" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>&lt;check 1hr 9min&gt;</p>
+<p>Chemmine Web Tools is an online service for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types. Compounds can be imported into the workbench by drawing structures in the web browser, copy and paste, from local files, or from a PubChem search which includes an online molecular editor.</p>
+<p>The steps below provide a guide on how to analyze the Paracetamol drug using the web interface.</p>
+<ul>
+<li><p>Download an SDF file for the drug of your choice. In this case the Paracetamol drug file is downloaded from <a href="https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:46195" class="uri">https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:46195</a></p></li>
+<li><p>Visit <a href="http://chemmine.ucr.edu/" class="uri">http://chemmine.ucr.edu/</a> to access the ChemmineR homepage.
+<img src="images/screenshots/ChemmineR/homepage.png" alt="ChemmineR homepage" /></p></li>
+<li><p>On the side bar, there is a tab titled, “WORKBENCH”. Click the “Add compounds” hyperlink.</p></li>
+<li><p>Click on the “SDF Upload” and click on the “CHOOSE FILE” button to upload the paracetamol SDF file from the local storage that was previously downloaded.
+<img src="images/screenshots/ChemmineR/sdf-upload.png" alt="upload-sdf" /></p></li>
+<li><p>The <code>paracetamol.sdf</code> has uploaded now click on “Show Structures” on the center of the page below
+<img src="images/screenshots/ChemmineR/my-compounds.png" alt="my compounds" /></p></li>
+</ul>
+<p>The chemical structure of paracetamol will show up along with other details like;
+<img src="images/screenshots/ChemmineR/paracetamol-structure.png" alt="paracetamol chemical structure" /></p>
 
+</div>
 </div>
 </div>
             </section>

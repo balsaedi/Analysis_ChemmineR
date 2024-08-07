@@ -16,7 +16,7 @@ The objectives of this project is to;
 Learner will able to analyze the drug-like small molecule in R
 
 ## Informatics
-Informatics refers to the study , design and application of computer and information systems to solve problems and improve processes in various domains. 
+Informatics refers to the study, design and application of computer and information systems to solve problems and improve processes in various domains. 
 These are some of the aspects covered in informatics;
 
 - Health informatics
@@ -57,7 +57,6 @@ The computer is used to analyze the interactions between the drug and the recept
 Once targets are developed are developed, libraries of compounds are screened for activity with one or more relevant assays using High Throughput Screening. 
 
 **HITS (High Throughput Screening)**  
-<br>
 The Biochemical target is identified and many compounds are tested on it. The compound with desired effect on the target are selected by HITS. 
 
 HITS is directly used as chemical probe to study the target and it provides the structure for chemists to begin developing a drug or other product. 
@@ -154,7 +153,7 @@ The guide below will demonstrate how to analyze the Ibuprofen drug using the ZIN
 
 - Navigate tp the `"substances"` tab on top of the page. The page below ill appear. Click on the search bar on top-left corner of the page, type `"Ibuprofen"` and press enter to search. 
 ![Ibuprofen search results](images/screenshots/zinc/zinc-search-bar.png)
-- More than one type of Ibuporofen will show up. In this case, we are interested on ZINC2647(Ibuprofen) which will probably appear on the top. Click it to show the details. 
+- More than one type of Ibuprofen will show up. In this case, we are interested on ZINC2647(Ibuprofen) which will probably appear on the top. Click it to show the details. 
 - The details of Ibuprofen will display as; 
 ![Ibuprofen results](images/screenshots/zinc/ibuprofen-results.png)
 
@@ -167,23 +166,32 @@ Ibuprofen is rapidly absorbed from the gastrointestinal tract and widely distrib
 For further information visit https://zinc.docking.org/substances/ZINC000000002647/
 
 
-## Why ChemmineR tool 
-`ChemmineR` is a chemoinformatics package for analyzing drug-like small molecule data in R . In addition, `ChemmineR    offers visualization functions for compounds clustering results and chemical structures. 
+## The ChemmineR tool 
+ChemmineR is a chemoinformatics package for analyzing drug-like small molecule data in R . In addition, `ChemmineR`    offers visualization functions for compounds clustering results and chemical structures. 
 
-The integration of chemoinformatics tools with the R programming environment has many advantages, such as aeasy access to a wide spectrum of statistical methods, machine learning algorithms and graphic utilities. 
+The integration of chemoinformatics tools with the R programming environment has many advantages, such as easy access to a wide spectrum of statistical methods, machine learning algorithms and graphic utilities. 
 
-`ChemmineR` is an online service for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types. 
+`ChemmineR` is exclussively used for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types. 
 
-<Check min 1hr 5mins>
+There are two ways to analyze a drug-like molecule using ChemmineR, they are: 
+
+- Web interface 
+- ChemmineR library under the `Bioconductor` package. 
 
 ### Overview of Chemmine web tool
-<add the web interface> 
+Chemmine Web Tools is an online service for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types. Compounds can be imported into the workbench by drawing structures in the web browser, copy and paste, from local files, or from a PubChem search which includes an online molecular editor. 
 
+The steps below provide a guide on how to analyze the Paracetamol drug using the web interface. 
 
-Chemmine WEb Tools is an online service for analyzing and clustering small molecules by structural similarities, physicochemical properties or custom data types. Compounds can be imported into the workbench by drawing structures in the web browser, copy and paste, from local files, or from a PubChem search which includes an online molecular editor. 
+- Download an SDF file for the drug of your choice. In this case the Paracetamol drug file is downloaded from https://www.ebi.ac.uk/chebi/searchId.do?chebiId=CHEBI:46195
+- Visit http://chemmine.ucr.edu/ to access the ChemmineR homepage. 
+![ChemmineR homepage](images/screenshots/ChemmineR/homepage.png)
+- On the side bar, there is a tab titled, "WORKBENCH". Click the "Add compounds" hyperlink.
+- Click on the "SDF Upload" and click on the "CHOOSE FILE" button to upload the paracetamol SDF file from the local storage that was previously downloaded. 
+![upload-sdf](images/screenshots/ChemmineR/sdf-upload.png)
 
+- The `paracetamol.sdf` has uploaded now click on "Show Structures" on the center of the page below
+![my compounds](images/screenshots/ChemmineR/my-compounds.png)
 
-## Exploring drug like molecules databases
-
-<check 1hr 9min> 
-
+The chemical structure of paracetamol will show up along with other details like;
+![paracetamol chemical structure](images/screenshots/ChemmineR/paracetamol-structure.png)
