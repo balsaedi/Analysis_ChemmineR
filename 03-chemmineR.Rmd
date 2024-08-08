@@ -14,7 +14,7 @@ BiocManager::install("ChemminerR")
 
 ## Loading the package and Documentation 
 The below command is called to invoke the `ChemmineR` package to the program 
-```{r}
+```{r error=FALSE, warning=FALSE, message=FALSE}
 library("ChemmineR") # Loads the package
 ```
 

@@ -167,6 +167,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.1" data-path="bioconductor-package.html"><a href="bioconductor-package.html#reading-the-.csv-file"><i class="fa fa-check"></i><b>2.5.1</b> Reading the *.csv file</a></li>
 <li class="chapter" data-level="2.5.2" data-path="bioconductor-package.html"><a href="bioconductor-package.html#brief-data-analysis"><i class="fa fa-check"></i><b>2.5.2</b> Brief data analysis</a></li>
 </ul></li>
+<li class="chapter" data-level="2.6" data-path="bioconductor-package.html"><a href="bioconductor-package.html#introduction-to-bioconductor"><i class="fa fa-check"></i><b>2.6</b> Introduction to Bioconductor</a>
+<ul>
+<li class="chapter" data-level="2.6.1" data-path="bioconductor-package.html"><a href="bioconductor-package.html#exploring-genomic-data"><i class="fa fa-check"></i><b>2.6.1</b> Exploring Genomic data</a></li>
+<li class="chapter" data-level="2.6.2" data-path="bioconductor-package.html"><a href="bioconductor-package.html#visualizing-gene-expression-data"><i class="fa fa-check"></i><b>2.6.2</b> Visualizing Gene Expression Data</a></li>
+<li class="chapter" data-level="2.6.3" data-path="bioconductor-package.html"><a href="bioconductor-package.html#annotating-genomic-data"><i class="fa fa-check"></i><b>2.6.3</b> Annotating Genomic Data</a></li>
+<li class="chapter" data-level="2.6.4" data-path="bioconductor-package.html"><a href="bioconductor-package.html#working-with-sequence-data"><i class="fa fa-check"></i><b>2.6.4</b> Working with Sequence Data</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html"><i class="fa fa-check"></i><b>3</b> Chemical Properties prediction and visualized.</a>
 <ul>
@@ -218,7 +225,7 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 <div id="loading-the-package-and-documentation" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Loading the package and Documentation<a href="chemical-properties-prediction-and-visualized..html#loading-the-package-and-documentation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The below command is called to invoke the <code>ChemmineR</code> package to the program</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="chemical-properties-prediction-and-visualized..html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ChemmineR&quot;</span>) <span class="co"># Loads the package</span></span></code></pre></div>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="chemical-properties-prediction-and-visualized..html#cb54-1" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;ChemmineR&quot;</span>) <span class="co"># Loads the package</span></span></code></pre></div>
 <p>To find the documentation - list all functions and classes call the command below</p>
 <pre><code>library(help=&quot;ChemmineR&quot;) # Lists all the functions and classes</code></pre>
 <p>To open a PDF manual for <code>ChemmineR</code> documentation from R</p>
@@ -226,12 +233,12 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 </div>
 <div id="create-instances-of-sdfset-class" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Create Instances of SDFset class<a href="chemical-properties-prediction-and-visualized..html#create-instances-of-sdfset-class" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="chemical-properties-prediction-and-visualized..html#cb33-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;sdfsample&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="chemical-properties-prediction-and-visualized..html#cb34-1" tabindex="-1"></a>sdfset <span class="ot">&lt;-</span> sdfsample</span>
-<span id="cb34-2"><a href="chemical-properties-prediction-and-visualized..html#cb34-2" tabindex="-1"></a>sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="co">#subsetting of object</span></span></code></pre></div>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="chemical-properties-prediction-and-visualized..html#cb57-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;sdfsample&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="chemical-properties-prediction-and-visualized..html#cb58-1" tabindex="-1"></a>sdfset <span class="ot">&lt;-</span> sdfsample</span>
+<span id="cb58-2"><a href="chemical-properties-prediction-and-visualized..html#cb58-2" tabindex="-1"></a>sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>] <span class="co">#subsetting of object</span></span></code></pre></div>
 <pre><code>## An instance of &quot;SDFset&quot; with 4 molecules</code></pre>
 <p>To return a summarized content of one SDF</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="chemical-properties-prediction-and-visualized..html#cb36-1" tabindex="-1"></a>sdfset[[<span class="dv">1</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="chemical-properties-prediction-and-visualized..html#cb60-1" tabindex="-1"></a>sdfset[[<span class="dv">1</span>]]</span></code></pre></div>
 <pre><code>## An instance of &quot;SDF&quot;
 ## 
 ## &lt;&lt;header&gt;&gt;
@@ -271,7 +278,7 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 <div id="retrieving-atom-bond-and-data-block" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Retrieving atom, bond and data block<a href="chemical-properties-prediction-and-visualized..html#retrieving-atom-bond-and-data-block" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><strong>Atom block</strong></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="chemical-properties-prediction-and-visualized..html#cb38-1" tabindex="-1"></a><span class="fu">atomblock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="chemical-properties-prediction-and-visualized..html#cb62-1" tabindex="-1"></a><span class="fu">atomblock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
 <pre><code>## $CMP1
 ##           C1      C2 C3 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16
 ## O_1   7.0468  0.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
@@ -496,7 +503,7 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 ## H_57 15.6648 -0.4440  0  0  0  0  0  0   0   0   0   0   0   0   0
 ## H_58 15.4379  0.4030  0  0  0  0  0  0   0   0   0   0   0   0   0
 ## H_59 14.5910  0.1760  0  0  0  0  0  0   0   0   0   0   0   0   0</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="chemical-properties-prediction-and-visualized..html#cb40-1" tabindex="-1"></a><span class="fu">atomblock</span>(sdfset[<span class="dv">1</span>])[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="chemical-properties-prediction-and-visualized..html#cb64-1" tabindex="-1"></a><span class="fu">atomblock</span>(sdfset[<span class="dv">1</span>])[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
 <pre><code>## $CMP1
 ##           C1      C2 C3 C5 C6 C7 C8 C9 C10 C11 C12 C13 C14 C15 C16
 ## O_1   7.0468  0.0839  0  0  0  0  0  0   0   0   0   0   0   0   0
@@ -570,7 +577,7 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 ## $&lt;NA&gt;
 ## NULL</code></pre>
 <p><strong>Bond block</strong></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="chemical-properties-prediction-and-visualized..html#cb42-1" tabindex="-1"></a><span class="fu">bondblock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="chemical-properties-prediction-and-visualized..html#cb66-1" tabindex="-1"></a><span class="fu">bondblock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
 <pre><code>## $CMP1
 ##    C1 C2 C3 C4 C5 C6 C7
 ## 1   1 16  2  0  0  0  0
@@ -805,7 +812,7 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 ## 59 32 57  1  0  0  0  0
 ## 60 32 58  1  0  0  0  0
 ## 61 32 59  1  0  0  0  0</code></pre>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="chemical-properties-prediction-and-visualized..html#cb44-1" tabindex="-1"></a><span class="fu">bondblock</span>(sdfset[<span class="dv">1</span>])[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="chemical-properties-prediction-and-visualized..html#cb68-1" tabindex="-1"></a><span class="fu">bondblock</span>(sdfset[<span class="dv">1</span>])[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
 <pre><code>## $CMP1
 ##    C1 C2 C3 C4 C5 C6 C7
 ## 1   1 16  2  0  0  0  0
@@ -882,7 +889,7 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 ## $&lt;NA&gt;
 ## NULL</code></pre>
 <p><strong>Data Block</strong></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="chemical-properties-prediction-and-visualized..html#cb46-1" tabindex="-1"></a><span class="fu">datablock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="chemical-properties-prediction-and-visualized..html#cb70-1" tabindex="-1"></a><span class="fu">datablock</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>])</span></code></pre></div>
 <pre><code>## $CMP1
 ##                                                                                                                                                                PUBCHEM_COMPOUND_CID 
 ##                                                                                                                                                                            &quot;650001&quot; 
@@ -1147,26 +1154,26 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 <div id="assigning-compound-ids-and-keeping-them-unique" class="section level3 hasAnchor" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> Assigning compound IDS and keeping them unique<a href="chemical-properties-prediction-and-visualized..html#assigning-compound-ids-and-keeping-them-unique" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Return IDs from SDFset object</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="chemical-properties-prediction-and-visualized..html#cb48-1" tabindex="-1"></a><span class="fu">cid</span>(sdfset)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb72-1"><a href="chemical-properties-prediction-and-visualized..html#cb72-1" tabindex="-1"></a><span class="fu">cid</span>(sdfset)[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
 <pre><code>## [1] &quot;CMP1&quot; &quot;CMP2&quot; &quot;CMP3&quot; &quot;CMP4&quot;</code></pre>
 <p>Returns IDs from SD file header</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="chemical-properties-prediction-and-visualized..html#cb50-1" tabindex="-1"></a>unique_ids <span class="ot">&lt;-</span> <span class="fu">makeUnique</span>(<span class="fu">sdfid</span>(sdfset))</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb74-1"><a href="chemical-properties-prediction-and-visualized..html#cb74-1" tabindex="-1"></a>unique_ids <span class="ot">&lt;-</span> <span class="fu">makeUnique</span>(<span class="fu">sdfid</span>(sdfset))</span></code></pre></div>
 <pre><code>## [1] &quot;No duplicates detected!&quot;</code></pre>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="chemical-properties-prediction-and-visualized..html#cb52-1" tabindex="-1"></a><span class="fu">cid</span>(sdfset) <span class="ot">&lt;-</span> unique_ids</span></code></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb76-1"><a href="chemical-properties-prediction-and-visualized..html#cb76-1" tabindex="-1"></a><span class="fu">cid</span>(sdfset) <span class="ot">&lt;-</span> unique_ids</span></code></pre></div>
 </div>
 <div id="converting-the-data-blocks-in-an-sdfset-to-a-matrix" class="section level3 hasAnchor" number="3.4.2">
 <h3><span class="header-section-number">3.4.2</span> Converting the data blocks in an SDFset to a matrix<a href="chemical-properties-prediction-and-visualized..html#converting-the-data-blocks-in-an-sdfset-to-a-matrix" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>These data blocks can also be converted to a matrix by</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="chemical-properties-prediction-and-visualized..html#cb53-1" tabindex="-1"></a>blockmatrix <span class="ot">&lt;-</span> <span class="fu">datablock2ma</span>(<span class="at">datablocklist =</span> <span class="fu">datablock</span>(sdfset))</span></code></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="chemical-properties-prediction-and-visualized..html#cb77-1" tabindex="-1"></a>blockmatrix <span class="ot">&lt;-</span> <span class="fu">datablock2ma</span>(<span class="at">datablocklist =</span> <span class="fu">datablock</span>(sdfset))</span></code></pre></div>
 <p>The matrix can also be split into numeric and character matrix by <code>splitNumChar()</code> function</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="chemical-properties-prediction-and-visualized..html#cb54-1" tabindex="-1"></a>numchar <span class="ot">&lt;-</span> <span class="fu">splitNumChar</span>(<span class="at">blockmatrix =</span> blockmatrix)</span></code></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb78-1"><a href="chemical-properties-prediction-and-visualized..html#cb78-1" tabindex="-1"></a>numchar <span class="ot">&lt;-</span> <span class="fu">splitNumChar</span>(<span class="at">blockmatrix =</span> blockmatrix)</span></code></pre></div>
 <p>Slice the numeric matrix</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="chemical-properties-prediction-and-visualized..html#cb55-1" tabindex="-1"></a>numchar[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="chemical-properties-prediction-and-visualized..html#cb79-1" tabindex="-1"></a>numchar[[<span class="dv">1</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>]</span></code></pre></div>
 <pre><code>##        PUBCHEM_COMPOUND_CID PUBCHEM_COMPOUND_CANONICALIZED
 ## 650001               650001                              1
 ## 650002               650002                              1</code></pre>
 <p>Slice the character matrix</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="chemical-properties-prediction-and-visualized..html#cb57-1" tabindex="-1"></a>numchar[[<span class="dv">2</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">11</span>]</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="chemical-properties-prediction-and-visualized..html#cb81-1" tabindex="-1"></a>numchar[[<span class="dv">2</span>]][<span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>, <span class="dv">10</span><span class="sc">:</span><span class="dv">11</span>]</span></code></pre></div>
 <pre><code>##        PUBCHEM_MOLECULAR_FORMULA
 ## 650001 &quot;C23H28N4O6&quot;             
 ## 650002 &quot;C18H23N5O3&quot;             
@@ -1176,18 +1183,18 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 </div>
 <div id="compute-atom-frequency-matrix-molecular-weight-and-formula" class="section level3 hasAnchor" number="3.4.3">
 <h3><span class="header-section-number">3.4.3</span> Compute atom frequency matrix, molecular weight and formula<a href="chemical-properties-prediction-and-visualized..html#compute-atom-frequency-matrix-molecular-weight-and-formula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="chemical-properties-prediction-and-visualized..html#cb59-1" tabindex="-1"></a>propma <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">MF=</span><span class="fu">MF</span>(sdfset),</span>
-<span id="cb59-2"><a href="chemical-properties-prediction-and-visualized..html#cb59-2" tabindex="-1"></a>                     <span class="at">MW=</span><span class="fu">MW</span>(sdfset), <span class="fu">atomcountMA</span>(sdfset))</span>
-<span id="cb59-3"><a href="chemical-properties-prediction-and-visualized..html#cb59-3" tabindex="-1"></a></span>
-<span id="cb59-4"><a href="chemical-properties-prediction-and-visualized..html#cb59-4" tabindex="-1"></a>propma[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,]</span></code></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="chemical-properties-prediction-and-visualized..html#cb83-1" tabindex="-1"></a>propma <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">MF=</span><span class="fu">MF</span>(sdfset),</span>
+<span id="cb83-2"><a href="chemical-properties-prediction-and-visualized..html#cb83-2" tabindex="-1"></a>                     <span class="at">MW=</span><span class="fu">MW</span>(sdfset), <span class="fu">atomcountMA</span>(sdfset))</span>
+<span id="cb83-3"><a href="chemical-properties-prediction-and-visualized..html#cb83-3" tabindex="-1"></a></span>
+<span id="cb83-4"><a href="chemical-properties-prediction-and-visualized..html#cb83-4" tabindex="-1"></a>propma[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,]</span></code></pre></div>
 <pre><code>##                 MF       MW  C  H N O S F Cl
 ## 650001  C23H28N4O6 456.4916 23 28 4 6 0 0  0
 ## 650002  C18H23N5O3 357.4069 18 23 5 3 0 0  0
 ## 650003 C18H18N4O3S 370.4255 18 18 4 3 1 0  0
 ## 650004 C21H27N5O5S 461.5346 21 27 5 5 1 0  0</code></pre>
 <p>Assign matrix data to data block</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="chemical-properties-prediction-and-visualized..html#cb61-1" tabindex="-1"></a><span class="fu">datablock</span>(sdfset) <span class="ot">&lt;-</span> propma</span>
-<span id="cb61-2"><a href="chemical-properties-prediction-and-visualized..html#cb61-2" tabindex="-1"></a><span class="fu">datablock</span>(sdfset[<span class="dv">1</span>]) <span class="co"># call the first compound in the databases </span></span></code></pre></div>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="chemical-properties-prediction-and-visualized..html#cb85-1" tabindex="-1"></a><span class="fu">datablock</span>(sdfset) <span class="ot">&lt;-</span> propma</span>
+<span id="cb85-2"><a href="chemical-properties-prediction-and-visualized..html#cb85-2" tabindex="-1"></a><span class="fu">datablock</span>(sdfset[<span class="dv">1</span>]) <span class="co"># call the first compound in the databases </span></span></code></pre></div>
 <pre><code>## $`650001`
 ##           MF           MW            C            H            N            O 
 ## &quot;C23H28N4O6&quot;   &quot;456.4916&quot;         &quot;23&quot;         &quot;28&quot;          &quot;4&quot;          &quot;6&quot; 
@@ -1197,10 +1204,10 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 <div id="string-searching-in-sdfset" class="section level3 hasAnchor" number="3.4.4">
 <h3><span class="header-section-number">3.4.4</span> String searching in SDFset<a href="chemical-properties-prediction-and-visualized..html#string-searching-in-sdfset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Returns the summary view of the matches</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="chemical-properties-prediction-and-visualized..html#cb63-1" tabindex="-1"></a><span class="fu">grepSDFset</span>(<span class="st">&quot;650001&quot;</span>, </span>
-<span id="cb63-2"><a href="chemical-properties-prediction-and-visualized..html#cb63-2" tabindex="-1"></a>           sdfset,</span>
-<span id="cb63-3"><a href="chemical-properties-prediction-and-visualized..html#cb63-3" tabindex="-1"></a>           <span class="at">field=</span><span class="st">&quot;datablock&quot;</span>,</span>
-<span id="cb63-4"><a href="chemical-properties-prediction-and-visualized..html#cb63-4" tabindex="-1"></a>           <span class="at">mode=</span><span class="st">&quot;subset&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="chemical-properties-prediction-and-visualized..html#cb87-1" tabindex="-1"></a><span class="fu">grepSDFset</span>(<span class="st">&quot;650001&quot;</span>, </span>
+<span id="cb87-2"><a href="chemical-properties-prediction-and-visualized..html#cb87-2" tabindex="-1"></a>           sdfset,</span>
+<span id="cb87-3"><a href="chemical-properties-prediction-and-visualized..html#cb87-3" tabindex="-1"></a>           <span class="at">field=</span><span class="st">&quot;datablock&quot;</span>,</span>
+<span id="cb87-4"><a href="chemical-properties-prediction-and-visualized..html#cb87-4" tabindex="-1"></a>           <span class="at">mode=</span><span class="st">&quot;subset&quot;</span>)</span></code></pre></div>
 <pre><code>## $`650001`
 ## An instance of &quot;SDF&quot;
 ## 
@@ -1234,10 +1241,10 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 ##           MF           MW            C            H              
 ## &quot;C23H28N4O6&quot;   &quot;456.4916&quot;         &quot;23&quot;         &quot;28&quot;        &quot;...&quot;</code></pre>
 <p>Search by index</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="chemical-properties-prediction-and-visualized..html#cb65-1" tabindex="-1"></a><span class="fu">grepSDFset</span>(<span class="st">&quot;650001&quot;</span>, </span>
-<span id="cb65-2"><a href="chemical-properties-prediction-and-visualized..html#cb65-2" tabindex="-1"></a>           sdfset,</span>
-<span id="cb65-3"><a href="chemical-properties-prediction-and-visualized..html#cb65-3" tabindex="-1"></a>           <span class="at">field=</span><span class="st">&quot;datablock&quot;</span>,</span>
-<span id="cb65-4"><a href="chemical-properties-prediction-and-visualized..html#cb65-4" tabindex="-1"></a>           <span class="at">mode=</span><span class="st">&quot;index&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="chemical-properties-prediction-and-visualized..html#cb89-1" tabindex="-1"></a><span class="fu">grepSDFset</span>(<span class="st">&quot;650001&quot;</span>, </span>
+<span id="cb89-2"><a href="chemical-properties-prediction-and-visualized..html#cb89-2" tabindex="-1"></a>           sdfset,</span>
+<span id="cb89-3"><a href="chemical-properties-prediction-and-visualized..html#cb89-3" tabindex="-1"></a>           <span class="at">field=</span><span class="st">&quot;datablock&quot;</span>,</span>
+<span id="cb89-4"><a href="chemical-properties-prediction-and-visualized..html#cb89-4" tabindex="-1"></a>           <span class="at">mode=</span><span class="st">&quot;index&quot;</span>)</span></code></pre></div>
 <pre><code>## 1 1 1 1 1 1 1 1 1 
 ## 1 2 3 4 5 6 7 8 9</code></pre>
 </div>
@@ -1245,14 +1252,14 @@ BiocManager::install(&quot;ChemminerR&quot;)</code></pre>
 <div id="molecular-visualization-in-r" class="section level2 hasAnchor" number="3.5">
 <h2><span class="header-section-number">3.5</span> Molecular visualization in R<a href="chemical-properties-prediction-and-visualized..html#molecular-visualization-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Export SDFset to SD file</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="chemical-properties-prediction-and-visualized..html#cb67-1" tabindex="-1"></a><span class="fu">write.SDF</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">file=</span><span class="st">&quot;data/sub.sdf&quot;</span>, <span class="at">sig=</span><span class="cn">TRUE</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="chemical-properties-prediction-and-visualized..html#cb91-1" tabindex="-1"></a><span class="fu">write.SDF</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">file=</span><span class="st">&quot;data/sub.sdf&quot;</span>, <span class="at">sig=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Plot molecule structure of one or many SDFs</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="chemical-properties-prediction-and-visualized..html#cb68-1" tabindex="-1"></a><span class="fu">plot</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">print=</span><span class="cn">FALSE</span>) <span class="co"># plots structures to R graphics device</span></span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chemical-properties-prediction-and-visualized..html#cb92-1" tabindex="-1"></a><span class="fu">plot</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">print=</span><span class="cn">FALSE</span>) <span class="co"># plots structures to R graphics device</span></span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
 <p>Compound viewing in web browser</p>
 <pre><code>sdf.visualize(sdfset[1:4])</code></pre>
 <p>You save the image of the visualization</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb70-1"><a href="chemical-properties-prediction-and-visualized..html#cb70-1" tabindex="-1"></a><span class="fu">save.image</span>(<span class="st">&quot;nstc.Rdata&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb94"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb94-1"><a href="chemical-properties-prediction-and-visualized..html#cb94-1" tabindex="-1"></a><span class="fu">save.image</span>(<span class="st">&quot;nstc.Rdata&quot;</span>)</span></code></pre></div>
 </div>
 </div>
             </section>

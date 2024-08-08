@@ -20,6 +20,11 @@ writing-script-of-code-in-r
 data-interface
 reading-the-.csv-file
 brief-data-analysis
+introduction-to-bioconductor
+exploring-genomic-data
+visualizing-gene-expression-data
+annotating-genomic-data
+working-with-sequence-data
 chemical-properties-prediction-and-visualized.
 installation
 loading-the-package-and-documentation

@@ -135,3 +135,88 @@ The subset function is used to filter the `proteindata` dataset to include only 
 
 The filtered data is stored in `objname5`
 
+Now that we have the basic concept of how R works, lets introduce the Bioconductor package. 
+
+## Introduction to Bioconductor
+This open-source project provides tools for analyzing and understanding high-throughput genomic data. It includes a broad selection of packages for both bioinformatics and chemoinformatics. Before we explore the ChemmineR package in depth, let’s start with a few basic concepts.
+
+### Exploring Genomic data 
+The `GenomicRanges` package is used to work with genomic intervals. It installed by: 
+```
+BiocManager::install("GenomicRanges")
+```
+
+Lets now import the genomic ranges package to the program
+```{r error=FALSE, warning=FALSE, message=FALSE}
+library(GenomicRanges)
+```
+
+`GRanges` objects represent genomic ranges, allowing you to manipulate genomic intervals and align them with genomic data like gene annotations.
+
+```{r}
+# Create a simple genomic range object
+gr <- GRanges(seqnames = "chr1", ranges = IRanges(start = 100, end = 200))
+gr
+```
+
+### Visualizing Gene Expression Data 
+The `DESeq2` package is used to find the differential gene expression analysis. It is widely used to identify genes that are differentially expressed under different conditions. Its is installed by; 
+```
+BiocManager::install("DESeq2")
+```
+Load the library
+```{r error=FALSE, warning=FALSE, message=FALSE}
+library(DESeq2)
+```
+
+`DESeq2` handles RNA-Seq data to model and estimate the expression levels of genes, providing statistical tools for identifying differentially expressed genes.
+
+```{r}
+# Example dataset
+dds <- makeExampleDESeqDataSet()
+dds <- DESeq(dds)
+res <- results(dds)
+plotMA(res)
+```
+
+### Annotating Genomic Data
+The `AnnotationDbi` and `org.Hs.eg.db` packages are used to annotate gene identifiers with gene names, descriptions and other relevant metadata. The packages can be installed by;
+```
+BiocManager::install("org.Hs.eg.db")
+```
+
+Load the `org.Hs.eg.db` library.
+
+```{r error=FALSE, warning=FALSE, message=FALSE}
+library(org.Hs.eg.db)
+```
+
+The packages provide a framework for mapping and retrieving biological data from databases. It’s crucial for adding biological context to your data, such as converting gene IDs to gene names
+
+```{r}
+# Example: Map Entrez IDs to gene symbols
+gene_ids <- c("1", "2", "3")
+symbols <- mapIds(org.Hs.eg.db, keys = gene_ids, column = "SYMBOL", keytype = "ENTREZID")
+symbols
+```
+
+### Working with Sequence Data 
+The popular `BioStrings package is used to analyze the protein, RNA and DNA sequences. The library is installed as the ones before. 
+```
+BiocManager::install("Biostrings")
+```
+Load the library
+
+```{r error=FALSE, warning=FALSE, message=FALSE}
+library(Biostrings)
+```
+
+Lets manipulate  the DNA String `"ATCGGCTA"` by reverse complimenting. 
+
+```{r}
+# Create a DNAString object
+dna_seq <- DNAString("ATCGGCTA")
+reverseComplement(dna_seq)
+```
+
+This Bioconductor is an essential toolkit for anyone working with genomic data. Its packages are designed to facilitate a wide range of bioinformatics tasks, from basic sequence manipulation to complex statistical analyses. 
