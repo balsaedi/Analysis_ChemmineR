@@ -19,7 +19,7 @@ importing-data-in-r
 writing-script-of-code-in-r
 data-interface
 reading-the-.csv-file
-analyzing-the-.csv-file
+brief-data-analysis
 chemical-properties-prediction-and-visualized.
 installation
 loading-the-package-and-documentation

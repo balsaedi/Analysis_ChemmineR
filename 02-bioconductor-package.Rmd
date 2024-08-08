@@ -40,61 +40,70 @@ Follow the following steps when working with data from external interfaces;
 - Set the current working directory `setwd()`. 
 
 ### Reading the *.csv file 
-Reading the csv file 
+In this section, we will work with two csv files, `test.csv` and `data.csv`. Both files are stored in a directory named `data`. Lets load the `data.csv` to the program. 
 
 ```{r}
-proteindata <- read.csv("data/test.csv")
+person_info <- read.csv("data/data.csv")
 ```
 
-and can be converted to a data frame and explored 
+The `read.csv()` function automatically converts the loaded to a data frame. `is.data.frame()` is used to find if a variable is a data frame
 
-```
+```{r}
 # just to confirm if the said data is a data frame 
-print(is.data.frame(proteindata))
-
-print(ncol(proteindata)) # count the number of columns 
-
-print(nrow(proteindata)) # count the number of records/rows/observations
+print(is.data.frame(person_info))
+```
+The `person_info` data set is confirmed to be a variable.
+The `ncol()` function counts the number of columns/variables/features in a data frame
+```{r}
+print(ncol(person_info)) # count the number of columns 
 ```
 
-### Analyzing the *.csv file 
+This data frame has 6 columns. Alternatively, the `nrow()` function counts the number of rows/observations/records. 
 
 ```{r}
-csvfile <- read.csv("data/data.csv", header=TRUE)
-#csvfile <- read.csv(file.choose(), header=TRUE)
-# choose data.csv in the 'data' directory
+print(nrow(person_info)) # count the number of records/rows/observations
 ```
+
+This data set has 10 rows and 6 columns. 
+
+### Brief data analysis
+When the function, `attach()` is called to a data frame, the R program can refer to specific column without associating it with the data frame name. In this section the `person_info` will be attached to R and dive shallow into data analysis. 
 
 Calculate the mean of the salary
 ```{r}
 # attach the file inorder to avoid the $ sign
-attach(csvfile)
+attach(person_info)
 
 mean(Salary)
 ```
 
+The average salary in the data set is 65200. The `names()` function is called to find the column names of the data set. 
 ```{r}
 # find the column names 
-names(csvfile)
+names(person_info)
 ```
 
 
-Now, lets jump to the protein data set 
+Now, lets jump to the protein data which is stored in the `test.csv` file. The `head()` function is used to show the first 6 records of the dataset
 ```{r}
 # Load the data set 
 proteindata <- read.csv("data/test.csv")
-proteindata
+head(proteindata)
 ```
 
 
-Convert it to dataframe and count rows, columns 
+Count the number of rows and columns in the protein dataset
 ```{r}
-print(is.data.frame(proteindata))
 ncol(proteindata)
-row(proteindata)
+nrow(proteindata)
 ```
 
-Get the protein detail having the most residues and the max residues value.
+The data frame has 10 rows and 6 columns. Alternatively, the `dim()` can be used, it returns the number of rows and columns respectively. 
+```{r}
+dim(proteindata)
+```
+
+Get the protein detail having the most residues and the max residues value. 
 ```{r}
 objname1 <- max(proteindata$NO_RESIDUES)
 objname1
@@ -103,11 +112,18 @@ objname2 <- subset(proteindata, NO_RESIDUES == max(NO_RESIDUES))
 objname2
 ```
 
-Get the protein detail having entry in PDB database
+The `max()` function is used to find the maximum value in a vector or column. In this code, `max(proteindata$NO_RESIDUES)` returns the highest number of residues (`NO_RESIDUES`) found in the `proteindata` dataset, and this value is stored in `objname1`.
+
+The `subset()` function is used to filter rows in a data frame that meet certain conditions. Here, `subset(proteindata, NO_RESIDUES == max(NO_RESIDUES))` returns all rows from the `proteindata` dataset where the `NO_RESIDUES` column matches the maximum value, and the result is stored in `objname2`.
+
+- Get the protein detail having entry in PDB database
 ```{r}
 objname3 <- subset(proteindata, DBNAME == "PDB")
 print(objname3)
 ```
+
+The `proteindata` dataset is filtered to select rows where the `DBNAME` column is equal to `"PDB"`. This means it extracts all proteins that are listed in the PDB database. The resulting subset is stored in `objname3`.
+
 
 Get the protein detail having more than 3 dimer from PDB database
 ```{r}
@@ -115,14 +131,7 @@ objname5 <- subset(proteindata, as.Date(DEPOSITED_DATE) > as.Date("2014-05-05"))
 print(objname5)
 ```
 
+The subset function is used to filter the `proteindata` dataset to include only rows where `DBNAME` is `"PDB"` and `DIMER_COUNT` is greater than 3.
 
-
-
-
-
-
-
-
-
-
+The filtered data is stored in `objname5`
 
