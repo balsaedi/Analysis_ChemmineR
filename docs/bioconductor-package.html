@@ -23,7 +23,7 @@
 <meta name="author" content="YOUR NAME HERE" />
 
 
-<meta name="date" content="2024-08-07" />
+<meta name="date" content="2024-08-08" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -216,28 +216,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="importing-data-in-r" class="section level2 hasAnchor" number="2.3">
 <h2><span class="header-section-number">2.3</span> Importing Data in R<a href="bioconductor-package.html#importing-data-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>&lt;at video 1hr 16min&gt;</p>
+<p>Depending on the type of data file, R has a varying methods to load the data. The below list shows how to load different types of files to the R program.</p>
+<ul>
+<li><code>data &lt;- read_csv("path/to/your/file.csv")</code> for csv file</li>
+<li><code>data &lt;- read_excel("path/to/your/file.xlsx", sheet = "Sheet1")</code> for excel file</li>
+<li><code>data &lt;- fread("path/to/your/file.csv")</code> for large csv files.</li>
+<li><code>data &lt;- read_sav("path/to/your/file.sav")</code> for SPSS files.</li>
+<li><code>data &lt;- read_dta("path/to/your/file.dta")</code> for stata files.</li>
+<li><code>data &lt;- read_sas("path/to/your/file.sas7bdat")</code> for SAS files.</li>
+</ul>
 </div>
 <div id="writing-script-of-code-in-r" class="section level2 hasAnchor" number="2.4">
 <h2><span class="header-section-number">2.4</span> Writing Script of Code in R<a href="bioconductor-package.html#writing-script-of-code-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Script are useful as they allow one to easily pick up where they left off on a project and progressively build and refine code and analysis.</p>
-<p>They also allow one to easily reproduce analysis run earlier.</p>
+<p>Script are useful as they allow one to;</p>
+<ul>
+<li>easily pick up where they left off on a project and progressively build and refine code and analysis.</li>
+<li>easily reproduce analysis run earlier.</li>
+</ul>
 <p>A script is a set of commands that usually includes commenting on what each piece of code intended to do</p>
 </div>
 <div id="data-interface" class="section level2 hasAnchor" number="2.5">
 <h2><span class="header-section-number">2.5</span> Data Interface<a href="bioconductor-package.html#data-interface" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Follow the following steps when working with data from external interfaces;</p>
 <ul>
-<li>Refer CSv working file(filepath) e.g <code>test.csv</code></li>
+<li>Refer CSV working file(filepath) e.g <code>test.csv</code></li>
 <li>Get the current working directory, <code>getwd()</code></li>
 <li>Set the current working directory <code>setwd()</code>.</li>
 </ul>
-<p><show a csv file screenshot></p>
 <div id="reading-the-.csv-file" class="section level3 hasAnchor" number="2.5.1">
 <h3><span class="header-section-number">2.5.1</span> Reading the *.csv file<a href="bioconductor-package.html#reading-the-.csv-file" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Reading the csv file</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="bioconductor-package.html#cb2-1" tabindex="-1"></a>proteindata <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;data/test.csv&quot;</span>)</span></code></pre></div>
-<p>and can be converted to a dataframe and explored</p>
+<p>and can be converted to a data frame and explored</p>
 <pre><code># just to confirm if the said data is a data frame 
 print(is.data.frame(proteindata))
 

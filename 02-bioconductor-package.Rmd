@@ -11,23 +11,33 @@ if (!requireNamespace("BiocManager", quitely=TRUE))
 ```
 
 ## Importing Data in R
-<at video 1hr 16min>
+Depending on the type of data file, R has a varying methods to load the data. The below list shows how to load different types of files to the R program. 
+
+- `data <- read_csv("path/to/your/file.csv")` for csv file
+- `data <- read_excel("path/to/your/file.xlsx", sheet = "Sheet1")` for excel file
+- `data <- fread("path/to/your/file.csv")` for large csv files.
+- `data <- read_sav("path/to/your/file.sav")` for SPSS files.
+- `data <- read_dta("path/to/your/file.dta")` for stata files.
+- `data <- read_sas("path/to/your/file.sas7bdat")` for SAS files.
 
 ## Writing Script of Code in R 
-Script are useful as they allow one to easily pick up where they left off on a project and progressively build and refine code and analysis. 
+In R, the use can interact directly with the console or prepare a script inform of `*.R` or `*.Rmd` (R Markdown) files. 
+Script are useful as they allow one to;
 
-They also allow one to easily reproduce analysis run earlier. 
+- easily pick up where they left off on a project and progressively build and refine code and analysis. 
+- easily reproduce analysis run earlier and documentation. This also saves time on repetetive tasks. 
+- do a batch processing such that tasks are automotated instead of running them one by one. 
+- debug the code and find errors line by line. 
+- version control such as git that tracks the changes and enables collaboration with other developers.
 
 A script is a set of commands that usually includes commenting on what each piece of code intended to do 
 
 ## Data Interface
 Follow the following steps when working with data from external interfaces; 
 
-- Refer CSv working file(filepath) e.g `test.csv`
+- Refer CSV working file(filepath) e.g `test.csv`
 - Get the current working directory, `getwd()`
 - Set the current working directory `setwd()`. 
-
-<show a csv file screenshot> 
 
 ### Reading the *.csv file 
 Reading the csv file 
@@ -36,7 +46,7 @@ Reading the csv file
 proteindata <- read.csv("data/test.csv")
 ```
 
-and can be converted to a dataframe and explored 
+and can be converted to a data frame and explored 
 
 ```
 # just to confirm if the said data is a data frame 
