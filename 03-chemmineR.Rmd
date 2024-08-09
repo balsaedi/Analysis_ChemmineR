@@ -1,7 +1,14 @@
 # Chemical Properties prediction and visualized. 
+<span style="color: green;">Structural properties similarity searching</span>  
+<span style="color: green;">Molecular visualizations</span>
 
-- Structural properties similarity searching 
-- Molecular visualizations 
+## Whats is ChemmineR?
+ChemmineR is an R package under the BioConductor library that is designed for the analysis and visualization of chemical data, especially on molecules and compounds. Below are some of its key features; 
+
+1. **Visualization**: It provide tools that visualize the chemical structures and theor relationships. This make it easier to interpret and communicate your findings. 
+2. **Chemical Structure Handling**: ChemmineR can read, write, and manipulate chemical structures. These structures are stored in file formats like SDF and SMILES which are the industry standard ways to describe the molecular structure in text format. 
+3. **Clustering**: ChemmineR can identify patterns and relationships between different molecules by grouping the like ones together.
+4. **Structure Similarity Search**: ChemmineR can compare different chemical structures and find their similarity and how useful they are for certain tasks like identifying compounds that may have similar properties or biological effects. 
 
 ## Installation 
 The `ChemmineR` package can be installed from R with: 
@@ -18,7 +25,7 @@ The below command is called to invoke the `ChemmineR` package to the program
 library("ChemmineR") # Loads the package
 ```
 
-To find the documentation - list all functions and classes call the command below
+To find the documentation and list all functions and classes call the command below
 ```
 library(help="ChemmineR") # Lists all the functions and classes
 ```

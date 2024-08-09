@@ -26,6 +26,7 @@ visualizing-gene-expression-data
 annotating-genomic-data
 working-with-sequence-data
 chemical-properties-prediction-and-visualized.
+whats-is-chemminer
 installation
 loading-the-package-and-documentation
 create-instances-of-sdfset-class
