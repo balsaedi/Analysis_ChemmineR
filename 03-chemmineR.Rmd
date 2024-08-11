@@ -103,19 +103,19 @@ bondblock(sdfset[1:4])
 ![bondblock-sample](images/bondblock-sample.png)
 
 **Data Block**  
-This function contains the additional information or the metadata found on the SDF file. 
+This function contains the additional information or the metadata found on the SDF file. This metadata is the information connected to the molecular properties for instance the molecular weight and logP. 
 ```{r}
 datablock(sdfset[1:4])
 ```
 
 ### Assigning compound IDS and keeping them unique
 
-Return IDs from SDFset object
+Return IDs from SDFset object. They are the compound IDS stored in the data block of each molecule within the SDFset that are used to unique identify each molecule. In this case we will subset and return the first four molecules. 
 ```{r}
 cid(sdfset)[1:4]
 ```
 
-Returns IDs from SD file header 
+Returns IDs from SD file header. The data set might have been combined from other different smaller data sets therefore, the `makeUnique()` function is used a unique ID to each molecule. It does by appending the suffixes "_1", "_2" to the compound IDS. This is also used to handle the duplicates. 
 ```{r}
 unique_ids <- makeUnique(sdfid(sdfset))
 cid(sdfset) <- unique_ids
@@ -201,7 +201,40 @@ You save the image of the visualization
 save.image("nstc.Rdata")
 ```
 
+### Molecular Property Functions
+Different types of atoms vary in their frequency across all molecules in an SDFset. The `atomCountMA()` is used to compute their frequency. 
+
+```{r}
+propma <- atomcountMA(sdfset, addH=FALSE) 
+boxplot(propma, col="blue", main="Atom Frequency")
+```
+
+In the above SDFset, Carbon and Hydrogen atoms are the most frequent while Flourine and Chlorine atoms are the least frequent in this sample SDFset. 
+These data is stored in the variable `atomprop`. 
+
+### Similarity Comparisons and Searching
+#### Maximum Common Substructure(MCS) Searching
+ChemmineR provides a functionality/algorithm that can be used to perform a pairwise compound comparison, clustering and similarity searching. This package is just but an add-on package to ChemmineR referred to as `fmcsR` and can be installed by 
+```
+BiocManager::install("fmcsR")
+```
+
+To load the library to the console run 
+```{r}
+library(fmcsR)
+```
+
+We will use a different SDSFset provided by the `fmcsR` package and compare between caffeine and viagra
+
+```{r}
+ data(fmcstest) # Loads test sdfset object 
+ test <- fmcs(fmcstest[1], fmcstest[2], au=2, bu=1) # Searches for MCS with mismatches 
+ plotMCS(test) # Plots both query compounds with MCS in color 
+```
+
+
 ## Resources
 The complete documentation (with code) of the `ChemmineR` package can be found below here 
 - https://www.bioconductor.org/packages/release/bioc/vignettes/ChemmineR/inst/doc/ChemmineR.html
+- https://www.bioconductor.org/packages/devel/bioc/vignettes/fmcsR/inst/doc/fmcsR.html
 

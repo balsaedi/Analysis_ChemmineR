@@ -36,4 +36,7 @@ converting-the-data-blocks-in-an-sdfset-to-a-matrix
 compute-atom-frequency-matrix-molecular-weight-and-formula
 string-searching-in-sdfset
 molecular-visualization-in-r
+molecular-property-functions
+similarity-comparisons-and-searching
+maximum-common-substructuremcs-searching
 resources
