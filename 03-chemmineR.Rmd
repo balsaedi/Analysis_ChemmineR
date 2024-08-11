@@ -36,36 +36,74 @@ vignette("ChemmineR")
 ```
 
 ## Create Instances of SDFset class
+SDF(Structure-Data-File) is the standard format for representing the chemical structures. Let me briefly walk you through a practical session on how to work with SDF files before diving deep into ChemmineR package. 
+
+- **Load the `sdfsample` file**  
+This is a built in dataset in ChemmineR. It is loaded by
 
 ```{r}
 data("sdfsample")
 ```
 
+- **Explore the `SDFset` object**  
+This data type falls under the class `SDFset`.
 ```{r}
-sdfset <- sdfsample
-sdfset[1:4] #subsetting of object
+class(sdfsample)
 ```
 
-To return a summarized content of one SDF
+Calling the data set by its name provides the summary
 ```{r}
-sdfset[[1]]
+sdfsample
+```
+In this case, the sdfsample has 100 molecules. To access a specific molecule, call it by index. For instance,accessing the first molecule;
+
+```{r}
+view(sdfsample[1])
+```
+-**Get the names of the molecules**  
+To find column names of the sdf data set call the `sdfid` command. 
+```{r}
+sdfid(sdfsample)
+```
+
+The SDF dataset can alsio be converted to SMILES (Simplified Molecular Input Line Entry System) format. However, you need to install the ChemmineOB before converting SMILE format
+```
+BiocManager::install("ChemmineOB")
+```
+the convert the file 
+
+```{r}
+smiles <- sdf2smiles(sdfsample)
+head(smiles)
+```
+
+- **Save and export the SDF data**  
+The SDF file can be exported to a file locally.
+```{r}
+write.SDF(sdfsample, file="data/sdfsample_export.sdf")
 ```
 
 ## Retrieving atom, bond and data block
-**Atom block**
+**Atom block**  
+The atom block provides information about each atom in a molecule, including its coordinates in 3D space and the element symbol. It can be retrieved using ChemmineR by invoking the function `atomblock`. In this case, we are retrieving the atom block information of the first four molecules.
 
-```{r}
+```
 atomblock(sdfset[1:4])
-atomblock(sdfset[1])[1:4]
 ```
+<br>
+![atomblock-sample](images/atomblock-sample.png)
 
-**Bond block**
-```{r}
+**Bond block**  
+The bond block provide the details of the connection between/among atoms and the type of bond. The bond block information can be retrieved by the function `bondblock`. In this case we are retrieving the bonblock information of the first four molecules
+
+```
 bondblock(sdfset[1:4])
-bondblock(sdfset[1])[1:4]
 ```
+<br>
+![bondblock-sample](images/bondblock-sample.png)
 
-**Data Block**
+**Data Block**  
+This function contains the additional information or the metadata found on the SDF file. 
 ```{r}
 datablock(sdfset[1:4])
 ```
@@ -103,7 +141,7 @@ numchar[[1]][1:2,1:2]
 ```
 
 Slice the character matrix 
-```{r}
+```
 numchar[[2]][1:2, 10:11]
 ```
 
@@ -163,7 +201,7 @@ You save the image of the visualization
 save.image("nstc.Rdata")
 ```
 
-# Resources
+## Resources
 The complete documentation (with code) of the `ChemmineR` package can be found below here 
 - https://www.bioconductor.org/packages/release/bioc/vignettes/ChemmineR/inst/doc/ChemmineR.html
 
