@@ -145,8 +145,8 @@ Slice the character matrix
 numchar[[2]][1:2, 10:11]
 ```
 
-### Compute atom frequency matrix, molecular weight and formula 
-
+Compute atom frequency matrix, molecular weight and formula 
+The molecular formula for each molecule can be computed by  the `MF()` function and will return an output that is a character of vectors, each entry corresponding to a molecule in the SDFset. `MW` calculates the molecular weight similar to the `MF` function where each molecule corresponds to the molecule in the SDFset. 
 ```{r}
 propma <- data.frame(MF=MF(sdfset),
                      MW=MW(sdfset), atomcountMA(sdfset))
@@ -169,7 +169,7 @@ grepSDFset("650001",
            field="datablock",
            mode="subset")
 ```
-Search by index
+The molecules can searched using the `grepSDSFset` function. The searching is performed by string marching and then returns an SDF summary of the matching entries. In this case we will search the molecule by index. 
 ```{r}
 grepSDFset("650001", 
            sdfset,
@@ -179,7 +179,7 @@ grepSDFset("650001",
 
 ## Molecular visualization in R 
 
-Export SDFset to SD file 
+Export SDFset to SDF file locally
 
 ```{r}
 write.SDF(sdfset[1:4], file="data/sub.sdf", sig=TRUE)
@@ -231,6 +231,28 @@ We will use a different SDSFset provided by the `fmcsR` package and compare betw
  test <- fmcs(fmcstest[1], fmcstest[2], au=2, bu=1) # Searches for MCS with mismatches 
  plotMCS(test) # Plots both query compounds with MCS in color 
 ```
+
+#### AP/APset Classes for Storing Atom Pair Descriptors
+Atom pair descriptors are a type of molecular fingerprint that capture information about the types of atoms and the distances between them in a molecule, which is useful for comparing and analyzing molecular structures. 
+
+`ChemmineR` and `fmcsR` libraries has got you covered on this, the function `sdf2ap()` function is used to convert an SDF data of a molecule into atom pair descriptors. Lets extract the atom pair descriptors of the first molecule. 
+
+```{r}
+ ap <- sdf2ap(sdfset[[1]]) # For single compound
+ ap
+```
+
+```
+# Extract for many compounds 
+ apset <- sdf2ap(sdfset)
+
+cid(apset[1:4]) # Compound IDs 
+ap(apset[1:4]) # Atom pair descriptors 
+db.explain(apset[1]) # Return atom pairs in human readable format 
+```
+![apset](images/apset.png)
+
+
 
 
 ## Resources

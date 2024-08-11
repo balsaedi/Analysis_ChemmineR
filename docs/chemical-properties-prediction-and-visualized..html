@@ -185,8 +185,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="3.5.1" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#assigning-compound-ids-and-keeping-them-unique"><i class="fa fa-check"></i><b>3.5.1</b> Assigning compound IDS and keeping them unique</a></li>
 <li class="chapter" data-level="3.5.2" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#converting-the-data-blocks-in-an-sdfset-to-a-matrix"><i class="fa fa-check"></i><b>3.5.2</b> Converting the data blocks in an SDFset to a matrix</a></li>
-<li class="chapter" data-level="3.5.3" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#compute-atom-frequency-matrix-molecular-weight-and-formula"><i class="fa fa-check"></i><b>3.5.3</b> Compute atom frequency matrix, molecular weight and formula</a></li>
-<li class="chapter" data-level="3.5.4" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#string-searching-in-sdfset"><i class="fa fa-check"></i><b>3.5.4</b> String searching in SDFset</a></li>
+<li class="chapter" data-level="3.5.3" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#string-searching-in-sdfset"><i class="fa fa-check"></i><b>3.5.3</b> String searching in SDFset</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="chemical-properties-prediction-and-visualized..html"><a href="chemical-properties-prediction-and-visualized..html#molecular-visualization-in-r"><i class="fa fa-check"></i><b>3.6</b> Molecular visualization in R</a>
 <ul>
@@ -390,9 +389,8 @@ This function contains the additional information or the metadata found on the S
 ## 650002 357.4069 18</code></pre>
 <p>Slice the character matrix</p>
 <pre><code>numchar[[2]][1:2, 10:11]</code></pre>
-</div>
-<div id="compute-atom-frequency-matrix-molecular-weight-and-formula" class="section level3 hasAnchor" number="3.5.3">
-<h3><span class="header-section-number">3.5.3</span> Compute atom frequency matrix, molecular weight and formula<a href="chemical-properties-prediction-and-visualized..html#compute-atom-frequency-matrix-molecular-weight-and-formula" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Compute atom frequency matrix, molecular weight and formula
+The molecular formula for each molecule can be computed by the <code>MF()</code> function and will return an output that is a character of vectors, each entry corresponding to a molecule in the SDFset. <code>MW</code> calculates the molecular weight similar to the <code>MF</code> function where each molecule corresponds to the molecule in the SDFset.</p>
 <div class="sourceCode" id="cb84"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb84-1"><a href="chemical-properties-prediction-and-visualized..html#cb84-1" tabindex="-1"></a>propma <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">MF=</span><span class="fu">MF</span>(sdfset),</span>
 <span id="cb84-2"><a href="chemical-properties-prediction-and-visualized..html#cb84-2" tabindex="-1"></a>                     <span class="at">MW=</span><span class="fu">MW</span>(sdfset), <span class="fu">atomcountMA</span>(sdfset))</span>
 <span id="cb84-3"><a href="chemical-properties-prediction-and-visualized..html#cb84-3" tabindex="-1"></a></span>
@@ -411,8 +409,8 @@ This function contains the additional information or the metadata found on the S
 ##            S            F           Cl 
 ##          &quot;0&quot;          &quot;0&quot;          &quot;0&quot;</code></pre>
 </div>
-<div id="string-searching-in-sdfset" class="section level3 hasAnchor" number="3.5.4">
-<h3><span class="header-section-number">3.5.4</span> String searching in SDFset<a href="chemical-properties-prediction-and-visualized..html#string-searching-in-sdfset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="string-searching-in-sdfset" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> String searching in SDFset<a href="chemical-properties-prediction-and-visualized..html#string-searching-in-sdfset" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Returns the summary view of the matches</p>
 <div class="sourceCode" id="cb88"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb88-1"><a href="chemical-properties-prediction-and-visualized..html#cb88-1" tabindex="-1"></a><span class="fu">grepSDFset</span>(<span class="st">&quot;650001&quot;</span>, </span>
 <span id="cb88-2"><a href="chemical-properties-prediction-and-visualized..html#cb88-2" tabindex="-1"></a>           sdfset,</span>
@@ -450,7 +448,7 @@ This function contains the additional information or the metadata found on the S
 ## &lt;&lt;datablock&gt;&gt; (9 data items)
 ##           MF           MW            C            H              
 ## &quot;C23H28N4O6&quot;   &quot;456.4916&quot;         &quot;23&quot;         &quot;28&quot;        &quot;...&quot;</code></pre>
-<p>Search by index</p>
+<p>The molecules can searched using the <code>grepSDSFset</code> function. The searching is performed by string marching and then returns an SDF summary of the matching entries. In this case we will search the molecule by index.</p>
 <div class="sourceCode" id="cb90"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb90-1"><a href="chemical-properties-prediction-and-visualized..html#cb90-1" tabindex="-1"></a><span class="fu">grepSDFset</span>(<span class="st">&quot;650001&quot;</span>, </span>
 <span id="cb90-2"><a href="chemical-properties-prediction-and-visualized..html#cb90-2" tabindex="-1"></a>           sdfset,</span>
 <span id="cb90-3"><a href="chemical-properties-prediction-and-visualized..html#cb90-3" tabindex="-1"></a>           <span class="at">field=</span><span class="st">&quot;datablock&quot;</span>,</span>
@@ -461,7 +459,7 @@ This function contains the additional information or the metadata found on the S
 </div>
 <div id="molecular-visualization-in-r" class="section level2 hasAnchor" number="3.6">
 <h2><span class="header-section-number">3.6</span> Molecular visualization in R<a href="chemical-properties-prediction-and-visualized..html#molecular-visualization-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Export SDFset to SD file</p>
+<p>Export SDFset to SDF file locally</p>
 <div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="chemical-properties-prediction-and-visualized..html#cb92-1" tabindex="-1"></a><span class="fu">write.SDF</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">file=</span><span class="st">&quot;data/sub.sdf&quot;</span>, <span class="at">sig=</span><span class="cn">TRUE</span>)</span></code></pre></div>
 <p>Plot molecule structure of one or many SDFs</p>
 <div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="chemical-properties-prediction-and-visualized..html#cb93-1" tabindex="-1"></a><span class="fu">plot</span>(sdfset[<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>], <span class="at">print=</span><span class="cn">FALSE</span>) <span class="co"># plots structures to R graphics device</span></span></code></pre></div>
@@ -492,6 +490,26 @@ These data is stored in the variable <code>atomprop</code>.</p>
 <span id="cb99-2"><a href="chemical-properties-prediction-and-visualized..html#cb99-2" tabindex="-1"></a> test <span class="ot">&lt;-</span> <span class="fu">fmcs</span>(fmcstest[<span class="dv">1</span>], fmcstest[<span class="dv">2</span>], <span class="at">au=</span><span class="dv">2</span>, <span class="at">bu=</span><span class="dv">1</span>) <span class="co"># Searches for MCS with mismatches </span></span>
 <span id="cb99-3"><a href="chemical-properties-prediction-and-visualized..html#cb99-3" tabindex="-1"></a> <span class="fu">plotMCS</span>(test) <span class="co"># Plots both query compounds with MCS in color </span></span></code></pre></div>
 <p><img src="bookdownproj_files/figure-html/unnamed-chunk-44-1.png" width="672" /></p>
+</div>
+<div id="apapset-classes-for-storing-atom-pair-descriptors" class="section level4 hasAnchor" number="3.6.2.2">
+<h4><span class="header-section-number">3.6.2.2</span> AP/APset Classes for Storing Atom Pair Descriptors<a href="chemical-properties-prediction-and-visualized..html#apapset-classes-for-storing-atom-pair-descriptors" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>Atom pair descriptors are a type of molecular fingerprint that capture information about the types of atoms and the distances between them in a molecule, which is useful for comparing and analyzing molecular structures.</p>
+<p><code>ChemmineR</code> and <code>fmcsR</code> libraries has got you covered on this, the function <code>sdf2ap()</code> function is used to convert an SDF data of a molecule into atom pair descriptors. Lets extract the atom pair descriptors of the first molecule.</p>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="chemical-properties-prediction-and-visualized..html#cb100-1" tabindex="-1"></a> ap <span class="ot">&lt;-</span> <span class="fu">sdf2ap</span>(sdfset[[<span class="dv">1</span>]]) <span class="co"># For single compound</span></span>
+<span id="cb100-2"><a href="chemical-properties-prediction-and-visualized..html#cb100-2" tabindex="-1"></a> ap</span></code></pre></div>
+<pre><code>## An instance of &quot;AP&quot;
+## &lt;&lt;atom pairs&gt;&gt;
+## 52614450304 52615497856 52615514112 52616547456 52616554624 ... length: 528</code></pre>
+<pre><code># Extract for many compounds 
+ apset &lt;- sdf2ap(sdfset)
+
+cid(apset[1:4]) # Compound IDs 
+ap(apset[1:4]) # Atom pair descriptors 
+db.explain(apset[1]) # Return atom pairs in human readable format </code></pre>
+<div class="float">
+<img src="images/apset.png" alt="apset" />
+<div class="figcaption">apset</div>
+</div>
 </div>
 </div>
 </div>
